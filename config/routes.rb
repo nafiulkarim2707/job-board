@@ -17,7 +17,12 @@ JobBoard::Application.routes.draw do
      match "job_list" => "widget#job_list", :as => "job_list_wiget"
   end
 
-  namespace :public do
-    resources :jobs, :only => [:index]
+  resources :companies do
+    resources :jobs, :only => [:index, :show]
   end
+
+  namespace :public do
+    resources :jobs, :only => [:index, :show]
+  end
+
 end
