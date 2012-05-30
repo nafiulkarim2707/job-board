@@ -7,8 +7,9 @@
       %th Title
       %th Location
       %th Salary
-      %th Jobs term
-      %th Expires at
+      %th Job Contract term
+      %th Posted
+      %th Expires in
       %th Actions
 
     - @jobs.each do |job|
@@ -18,8 +19,11 @@
         %td= job.title
         %td= job.location
         %td= job.salary
-        %td= job.jobs_term
-        %td= job.expires_at
+        %td= job.contract_type
+        %td
+          = job.created_at.present? ? distance_of_time_in_words_to_now(job.created_at) + ' ago' : '-'
+        %td
+          = job.expires_at.present? ? distance_of_time_in_words_to_now(job.expires_at) : '-'
         %td
           = link_to 'Show', console_job_path(job), :class => 'btn'
           = link_to 'Edit', edit_console_job_path(job), :class => 'btn'

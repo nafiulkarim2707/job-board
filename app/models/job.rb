@@ -1,5 +1,6 @@
 class Job
   include Mongoid::Document
+  include Mongoid::Timestamps
   include Mongoid::MultiParameterAttributes
   belongs_to :company
 
@@ -10,7 +11,13 @@ class Job
   field :additional_qualities, type: String
   field :salary, type: String
   field :instructions, type: String
-  field :job_type, type: String
+  field :contract_type, type: String
   field :notes, type: String
   field :expires_at, type: Time
+  field :display, type: Boolean, :default => true
+
+  validates :title, :presence => true
+  validates :description, :presence => true
+  validates :requirements, :presence => true
+  validates :expires_at, :presence => true
 end
