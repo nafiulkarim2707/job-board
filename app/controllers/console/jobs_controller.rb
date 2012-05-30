@@ -40,9 +40,9 @@ class Console::JobsController < Console::ConsoleController
   # POST /jobs
   # POST /jobs.json
   def create
-    @company = Company.find(params[:job][:company])
+    @company = Company.find(params[:job][:company_id])
 
-    @job = @company.jobs.new(params[:job].except(:company))
+    @job = @company.jobs.new(params[:job].except(:company_id))
     respond_to do |format|
       if @job.save
         format.html { redirect_to console_job_path(@job), notice: 'Job was successfully created.' }
@@ -76,7 +76,7 @@ class Console::JobsController < Console::ConsoleController
     @job.destroy
 
     respond_to do |format|
-      format.html { redirect_to jobs_url }
+      format.html { redirect_to console_jobs_url }
       format.json { head :no_content }
     end
   end
