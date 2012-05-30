@@ -20,6 +20,7 @@ gem 'tinymce-rails' #must not be in asset group
 
 gem 'twitter-bootstrap-rails'
 gem 'will_paginate'
+gem 'acts-as-taggable-on', '~> 2.2.2'
 
 
 group :development do
