@@ -1,0 +1,43 @@
+= form_for([:console, @job], :html => { :class => 'form-horizontal' }) do |f|
+  -if @job.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@job.errors.count, "error")} prohibited this job from being saved:"
+      %ul
+        - @job.errors.full_messages.each do |msg|
+          %li= msg
+  .field
+    = f.label :company_id
+    = f.select :company_id, Company.all.map{|company| [company.name, company.id]}
+  .field
+    = f.label :title
+    = f.text_field :title
+  .field
+    = f.label :location
+    = f.text_field :location
+  .field
+    = f.label :description
+    = f.text_area :description
+  .field
+    = f.label :requirements
+    = f.text_area :requirements
+  .field
+    = f.label :additional_qualities
+    = f.text_area :additional_qualities
+  .field
+    = f.label :salary
+    = f.text_field :salary
+  .field
+    = f.label :instructions
+    = f.text_area :instructions
+  .field
+    = f.label :job_type
+    = f.select :job_type, [['Full Time', 'fulltime'], ['Part Time', 'parttime'], ['Telecommute', 'telecommuate'], ['Other', 'other']], :html => { :class => 'date_parts' }
+  .field
+    = f.label :notes
+    = f.text_area :notes
+  .field.expires
+    = f.label :expires_at
+    = f.datetime_select :expires_at, start_year: Time.now.year, end_year: (Time.now + 2.years).year, minute_step: 15, hour_step: 3
+  .actions
+    %hr
+    = f.submit 'Save Job', :class => 'btn btn-primary btn-large'
