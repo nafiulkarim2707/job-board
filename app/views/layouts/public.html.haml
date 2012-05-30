@@ -32,8 +32,8 @@
           = yield
 
       %footer
-        %p
-          &copy; somewhere in net ltd
+        %p{:style => 'text-align: center'}
+          &copy; <a href="http://somewherein.net">somewhere in net ltd</a>
           = Time.now.year
 
     = javascript_include_tag "application"

@@ -14,7 +14,7 @@
         %td
           = link_to job.company.name, company_jobs_path(job.company)
         %td= link_to job.title, company_job_path(job.company, job)
-        %td= job.requirements
+        %td= job.requirements.html_safe
         %td
 
           - if (Time.now + 2.days) > job.expires_at
