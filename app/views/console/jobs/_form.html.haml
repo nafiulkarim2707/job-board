@@ -40,7 +40,7 @@
     = f.datetime_select :expires_at, start_year: Time.now.year, end_year: (Time.now + 2.years).year, minute_step: 15, hour_step: 3
   .field
     = f.label :display, 'Visibility'
-    = f.select :contract_type, [['Display', true], ['Hide', false]]
+    = f.select :display, [['Display', true], ['Hide', false]]
   .actions
     %hr
     = f.submit 'Save Job', :class => 'btn btn-primary btn-large'
