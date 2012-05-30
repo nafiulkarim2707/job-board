@@ -1,88 +1,78 @@
-%table.table.table-bordered
-  %tr
-    %td= link_to '<< view all', public_jobs_path
-  %tr
-    %td
-      %h1
-        %span.btn-info
+.row-fluid
+  =link_to '<< view all', public_jobs_path
+  %table.table.table-bordered
+    %tr
+      %th{colspan: 2}
+        %h1
           = @job.title
 
-  - if @job.description.present?
-    %tr
-      %td
-        %h3
-          %span.btn-warning
+    - if @job.description.present?
+      %tr
+        %th
+          %h3
             Description
-        %br/
-        =@job.description.html_safe
+        %td
+          =@job.description.html_safe
 
-  - if @job.requirements.present?
-    %tr
-      %td
-        %h3
-          %span.btn-warning
+    - if @job.requirements.present?
+      %tr
+        %th
+          %h3
             Requirements
-        %br/
-        =@job.requirements.html_safe
+          %br/
+          %td
+            =@job.requirements.html_safe
 
-  - if @job.additional_qualities.present?
-    %tr
-      %td
-        %h3
-          %span.btn-warning
+    - if @job.additional_qualities.present?
+      %tr
+        %th
+          %h3
             Additional qualities
-        %br/
-        =@job.additional_qualities.html_safe
+          %td
+            =@job.additional_qualities.html_safe
 
 
-  - if @job.salary.present?
-    %tr
-      %td
-        %h3
-          %span.btn-warning
+    - if @job.salary.present?
+      %tr
+        %th
+          %h3
             Salary
-        %br/
-        =@job.salary
+        %td
+          =@job.salary
 
-  - if @job.instructions.present?
-    %tr
-      %td
-        %h3
-          %span.btn-warning
+    - if @job.instructions.present?
+      %tr
+        %td
+          %h3
             Instructions
-        %br/
-        =@job.instructions.html_safe
+          =@job.instructions.html_safe
 
-  - if @job.contract_type.present?
-    %tr
-      %td
-        %h3
-          %span.btn-warning
+    - if @job.contract_type.present?
+      %tr
+        %th
+          %h3
             Contract Type
-        %br/
-        =@job.contract_type.html_safe
+        %td
+          =@job.contract_type.html_safe
 
-  - if @job.notes.present?
-    %tr
-      %td
-        %h3
-          %span.btn-warning
+    - if @job.notes.present?
+      %tr
+        %th
+          %h3
             Notes
-        %br/
-        =@job.notes.html_safe
+        %td
+          =@job.notes.html_safe
 
 
-  - if @job.expires_at.present?
-    %tr
-      %td
-        %h3
-          %span.btn-warning
+    - if @job.expires_at.present?
+      %tr
+        %th
+          %h3
             Expires
-        %br/
-        #{@job.expires_at.strftime('%d/%m/%Y %H:%M')}
+        %td
+          #{@job.expires_at.strftime('%d/%m/%Y %H:%M')}
 
-  %tr
-    %td= link_to '<< view all listing', public_jobs_path
-  %tr
-    %td= link_to "<< view all #{@job.company.name} listing", company_jobs_path(@job.company)
+    %tr
+      %td= link_to '<< view all listing', public_jobs_path
+      %td= link_to "<< view all #{@job.company.name} listing", company_jobs_path(@job.company)
 

@@ -1,3 +1,13 @@
-// Place all the styles related to the public/jobs controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.job-detail{
+  .job-title{
+    background-color: green;
+    padding: 8px;
+  }
+
+  h3{
+    font-size: 14pt;
+    background-color: #90ee90;
+    padding: 5px;
+  }
+}
+
