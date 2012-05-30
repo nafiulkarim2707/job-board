@@ -1,6 +1,9 @@
 %p#notice= notice
 
 %p
+  %b Company:
+  = link_to @job.company.name, console_company_path(@job)
+%p
   %b Title:
   = @job.title
 %p
