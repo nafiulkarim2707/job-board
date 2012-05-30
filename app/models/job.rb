@@ -2,6 +2,7 @@ class Job
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::MultiParameterAttributes
+
   belongs_to :company
 
   field :title, type: String
@@ -15,6 +16,7 @@ class Job
   field :notes, type: String
   field :expires_at, type: Time
   field :display, type: Boolean, default: true
+  field :tags, type: String
 
   validates :title, :presence => true
   validates :description, :presence => true

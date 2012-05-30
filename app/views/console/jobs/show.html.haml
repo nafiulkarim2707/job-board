@@ -36,5 +36,8 @@
   %p
   %h3 Expires at:
   %pre= @job.expires_at
+  %p
+  %h3 Tags:
+  %pre= @job.tags.to_s
   = link_to 'Edit', edit_console_job_path(@job), :class => 'btn'
   = link_to 'Back', console_jobs_path, :class => 'btn'

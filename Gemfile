@@ -3,7 +3,6 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.3'
 
 gem 'mongoid', '~> 3.0.0.rc'
-
 gem 'devise'
 
 # Gems used only for assets and not required
@@ -20,7 +19,7 @@ gem 'tinymce-rails' #must not be in asset group
 
 gem 'twitter-bootstrap-rails'
 gem 'will_paginate'
-gem 'acts-as-taggable-on', '~> 2.2.2'
+
 
 
 group :development do
