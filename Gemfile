@@ -14,11 +14,12 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'haml-rails'
   gem 'uglifier', '>= 1.0.3'
+  gem 'jquery-rails'
+  gem 'jquery-ui-rails'
 end
 
 gem 'twitter-bootstrap-rails'
 gem 'will_paginate'
-gem 'jquery-rails'
 
 
 group :development do

@@ -6,15 +6,10 @@
       %th Company
       %th Title
       %th Location
-      %th Description
-      %th Requirements
-      %th Additional qualities
       %th Salary
-      %th Instructions
       %th Jobs term
-      %th Notes
       %th Expires at
-      %th
+      %th Actions
 
     - @jobs.each do |job|
       %tr
@@ -22,18 +17,13 @@
           = link_to job.company.name, console_company_path(job.company)
         %td= job.title
         %td= job.location
-        %td= job.description
-        %td= job.requirements
-        %td= job.additional_qualities
         %td= job.salary
-        %td= job.instructions
         %td= job.jobs_term
-        %td= job.notes
         %td= job.expires_at
         %td
-          = link_to 'Show', console_job_path(job)
-          = link_to 'Edit', edit_console_job_path(job)
-          = link_to 'Destroy', console_job_path(job), :confirm => 'Are you sure to delete this jobs?', :method => :delete
+          = link_to 'Show', console_job_path(job), :class => 'btn'
+          = link_to 'Edit', edit_console_job_path(job), :class => 'btn'
+          = link_to 'Destroy', console_job_path(job), :confirm => 'Are you sure to delete this jobs?', :method => :delete, :class => 'btn btn-danger'
 
   %br
   /= pagination_links(@jobs)
