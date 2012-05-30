@@ -1,0 +1,52 @@
+// Place all the styles related to the widget controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+div#hireme {
+    border: 1px solid #B5B5B5;
+    background:  white url(/assets/logo.png) 1px 1px no-repeat;
+    color: #333;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 12px;
+    text-align: left;
+    line-height: 130%;
+    padding: 0;
+    margin: 12px 0;
+    width: 230px;
+    min-height: 220px;
+    clear: both;
+}
+
+div#hireme > ul {
+  margin: 0;
+  margin-top: 100px;
+  padding: 0;
+  list-style: none;
+}
+
+div#hireme > ul > li {
+  padding: 0;
+  margin: 12px!important;
+}
+
+div#hireme > ul > li > a {
+    display: block;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+div#hireme > ul > li > a > span.company {
+    font-weight: bold;
+}
+
+div#hireme > ul > li > a > span {
+    color:
+    #666;
+    float: none;
+    display: block;
+}
+
+
+div#hireme > .powerd_by{
+    float: right;
+}
