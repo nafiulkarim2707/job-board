@@ -6,6 +6,8 @@ class Company
   field :website, type: String
   field :address, type: String
 
+  has_many :jobs
+
   validates :name, :presence => true, :uniqueness => true
   validates :website, :uniqueness => true
 

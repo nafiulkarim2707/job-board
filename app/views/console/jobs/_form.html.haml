@@ -1,0 +1,45 @@
+= form_for [:console, @job] do |f|
+  -if @job.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@job.errors.count, "error")} prohibited this job from being saved:"
+      %ul
+        - @job.errors.full_messages.each do |msg|
+          %li= msg
+  .field
+    = f.label :company
+    - if @job.new_record?
+      = f.select :company, Company.all.map{|company| [company.name, company.id]}
+    - else
+      = link_to @job.company.name, console_company_path(@job.company)
+  .field
+    = f.label :title
+    = f.text_field :title
+  .field
+    = f.label :location
+    = f.text_field :location
+  .field
+    = f.label :description
+    = f.text_area :description
+  .field
+    = f.label :requirements
+    = f.text_area :requirements
+  .field
+    = f.label :additional_qualities
+    = f.text_area :additional_qualities
+  .field
+    = f.label :salary
+    = f.text_field :salary
+  .field
+    = f.label :instructions
+    = f.text_area :instructions
+  .field
+    = f.label :jobs_term
+    = f.text_field :jobs_term
+  .field
+    = f.label :notes
+    = f.text_area :notes
+  .field
+    = f.label :expires_at
+    = f.datetime_select :expires_at
+  .actions
+    = f.submit 'Save'

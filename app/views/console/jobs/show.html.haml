@@ -1,0 +1,36 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @job.title
+%p
+  %b Location:
+  = @job.location
+%p
+  %b Description:
+  = @job.description
+%p
+  %b Requirements:
+  = @job.requirements
+%p
+  %b Additional qualities:
+  = @job.additional_qualities
+%p
+  %b Salary:
+  = @job.salary
+%p
+  %b Instructions:
+  = @job.instructions
+%p
+  %b Jobs term:
+  = @job.jobs_term
+%p
+  %b Notes:
+  = @job.notes
+%p
+  %b Expires at:
+  = @job.expires_at
+
+= link_to 'Edit', edit_console_job_path(@job)
+\|
+= link_to 'Back', console_jobs_path
