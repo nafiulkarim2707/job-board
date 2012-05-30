@@ -32,10 +32,9 @@
           = yield
 
       %footer
-        %p &copy; Company 2012
-    /
-      Javascripts
-      \==================================================
-    / Placed at the end of the document so the pages load faster
+        %p
+          &copy; somewhere in net ltd
+          = Time.now.year
+
     = javascript_include_tag "application"
 

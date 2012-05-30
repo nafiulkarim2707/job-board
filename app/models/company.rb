@@ -1,10 +1,12 @@
 class Company
   include Mongoid::Document
+  include Mongoid::Timestamps
 
   field :name, type: String
   field :email, type: String
   field :website, type: String
   field :address, type: String
+  field :overview, type: String
 
   has_many :jobs
 

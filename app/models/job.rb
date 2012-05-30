@@ -14,12 +14,12 @@ class Job
   field :contract_type, type: String
   field :notes, type: String
   field :expires_at, type: Time
-  field :display, type: Boolean, :default => true
+  field :display, type: Boolean, default: true
 
   validates :title, :presence => true
   validates :description, :presence => true
   validates :requirements, :presence => true
   validates :expires_at, :presence => true
 
-  scope :active, where(display: true)
+  scope :active, where(display: true).where(:expires_at.gte => Time.now)
 end

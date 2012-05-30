@@ -16,31 +16,32 @@
     = f.text_field :location
   .field
     = f.label :description
-    = f.text_area :description
+    = f.text_area :description, :class => 'full-width tinymce'
   .field
     = f.label :requirements
-    = f.text_area :requirements
+    = f.text_area :requirements, :class => 'full-width'
   .field
     = f.label :additional_qualities
-    = f.text_area :additional_qualities
+    = f.text_area :additional_qualities, :class => 'full-width'
   .field
     = f.label :salary
     = f.text_field :salary
   .field
     = f.label :instructions
-    = f.text_area :instructions
+    = f.text_area :instructions, :class => 'full-width'
   .field
     = f.label :contract_type
     = f.select :contract_type, [['Full Time', 'fulltime'], ['Part Time', 'parttime'], ['Telecommute', 'telecommuate'], ['Other', 'other']], :html => { :class => 'date_parts' }
   .field
     = f.label :notes
-    = f.text_area :notes
+    = f.text_area :notes, :class => 'full-width'
   .field.expires
     = f.label :expires_at
     = f.datetime_select :expires_at, start_year: Time.now.year, end_year: (Time.now + 2.years).year, minute_step: 15, hour_step: 3
   .field
     = f.label :display, 'Visibility'
     = f.select :display, [['Display', true], ['Hide', false]]
+
   .actions
     %hr
     = f.submit 'Save Job', :class => 'btn btn-primary btn-large'

@@ -2,8 +2,7 @@ class Console::JobsController < Console::ConsoleController
   # GET /jobs
   # GET /jobs.json
   def index
-    @jobs = Job.all
-
+    @jobs = Job.all.sort(_id: -1)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @jobs }

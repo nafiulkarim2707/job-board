@@ -15,11 +15,9 @@
       %td= company.website
       %td= company.address
       %td
-        = link_to 'Show', console_company_path(company)
-        \::
-        = link_to 'Edit', edit_console_company_path(company)
-        \::
-        = link_to 'Destroy', console_company_path(company), :confirm => 'Are you sure?', :method => :delete
+        = link_to 'Show', console_company_path(company), :class => 'btn'
+        = link_to 'Edit', edit_console_company_path(company), :class => 'btn'
+        = link_to 'Destroy', console_company_path(company), :confirm => 'Are you sure?', :method => :delete, :class => 'btn btn-danger'
 
 %br
 
