@@ -1,4 +1,4 @@
-%h1 Jobs
+%h1 Jobs of #{@company.name}
 - if @jobs.present?
   /= pagination_links(@jobs)
   %table.table.table-striped
@@ -13,7 +13,7 @@
       %tr
         %td
           = link_to job.company.name, company_jobs_path(job.company)
-        %td= link_to job.title, public_job_path(job)
+        %td= link_to job.title, company_job_path(job.company, job)
         %td= job.requirements
         %td
 
