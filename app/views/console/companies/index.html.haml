@@ -1,0 +1,26 @@
+%h1 Companies
+
+%table.table.table-striped
+  %tr
+    %th Name
+    %th Email
+    %th Website
+    %th Address
+    %th
+
+  - @companies.each do |company|
+    %tr
+      %td= company.name
+      %td= company.email
+      %td= company.website
+      %td= company.address
+      %td
+        = link_to 'Show', console_company_path(company)
+        \::
+        = link_to 'Edit', edit_console_company_path(company)
+        \::
+        = link_to 'Destroy', console_company_path(company), :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Company', new_console_company_path

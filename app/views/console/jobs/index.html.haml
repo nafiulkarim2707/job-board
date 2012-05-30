@@ -1,0 +1,43 @@
+%h1 Jobs
+- if @jobs.present?
+  /= pagination_links(@jobs)
+  %table.table.table-striped
+    %tr
+      %th Company
+      %th Title
+      %th Location
+      %th Description
+      %th Requirements
+      %th Additional qualities
+      %th Salary
+      %th Instructions
+      %th Jobs term
+      %th Notes
+      %th Expires at
+      %th
+
+    - @jobs.each do |job|
+      %tr
+        %td
+          = link_to job.company.name, console_company_path(job.company)
+        %td= job.title
+        %td= job.location
+        %td= job.description
+        %td= job.requirements
+        %td= job.additional_qualities
+        %td= job.salary
+        %td= job.instructions
+        %td= job.jobs_term
+        %td= job.notes
+        %td= job.expires_at
+        %td
+          = link_to 'Show', console_job_path(job)
+          = link_to 'Edit', edit_console_job_path(job)
+          = link_to 'Destroy', console_job_path(job), :confirm => 'Are you sure to delete this jobs?', :method => :delete
+
+  %br
+  /= pagination_links(@jobs)
+- else
+  No Jobs added so far!
+%br
+= link_to 'New Job', new_console_job_path, :class => 'btn btn-primary'
