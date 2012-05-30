@@ -1,26 +1,19 @@
 = stylesheet_link_tag 'widget'
 
-#hireme
-  %a.top{:href => "http://careers.stackoverflow.com/jobs?a=12", :target => "_blank"}
-  %br
-  %ul.jobs
-    %li
-      %a{:href => "http://careers.stackoverflow.com/jobs/20280/software-engineer-mulu?a=nXAOP5K", :target => "_blank", :title => "software engineer at mulu. Click to learn more."}
-        software engineer
-        %br
-          %span.company mulu
-          %span.location Palo Alto, CA; Los Angeles, CA
-    %li
-      %a{:href => "http://careers.stackoverflow.com/jobs/14957/front-end-product-engineer-tumblr?a=hFFE532", :target => "_blank", :title => "Front-End Product Engineer at Tumblr. Click to learn more."}
-        Front-End Product Engineer
-        %br
-          %span.company Tumblr
-          %span.location New York, NY
-    %li
-      %a{:href => "http://careers.stackoverflow.com/jobs/20359/software-engineer-ios-applications-m-f-numberfour-ag?a=o3ll0sM", :target => "_blank", :title => "Software Engineer, iOS Applications (m/f) at NumberFour AG. Click to learn more."}
-        Software Engineer, iOS Applications (m/f)
-        %br
-          %span.company NumberFour AG
-          %span.location Hamburg, Germany
-  %span.powerd_by
-    us  adfadfasdf
+.floatbox.alt1
+  .floathead{:style => "text-align: left"}
+    %h1 চাকুরী বোর্ড
+
+  - if @jobs.present?
+    - @jobs.each do |job|
+      .floatmid
+        %a.jb-item{:href => '#'}
+          %span.jb-deadline>#{job.expires_at.strftime('%d/%m')}
+          = job.title
+          %span.jb-comp
+            = job.company.name
+
+  - else
+    No Jobs found so far!
+  .floatfoot
+    %a{:href => public_jobs_url} আরো দেখুন

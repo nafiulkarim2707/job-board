@@ -16,4 +16,8 @@ JobBoard::Application.routes.draw do
   scope '/widget' do
      match "job_list" => "widget#job_list", :as => "job_list_wiget"
   end
+
+  namespace :public do
+    resources :jobs, :only => [:index]
+  end
 end

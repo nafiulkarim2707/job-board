@@ -20,4 +20,6 @@ class Job
   validates :description, :presence => true
   validates :requirements, :presence => true
   validates :expires_at, :presence => true
+
+  scope :active, where(display: true)
 end
