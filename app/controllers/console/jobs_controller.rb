@@ -36,6 +36,21 @@ class Console::JobsController < Console::ConsoleController
     @job = Job.find(params[:id])
   end
 
+  def duplicate
+    @job = Job.find(params[:id])
+    redirect_to :console_jobs, :alert => 'No job found!' if @job.blank?
+    @new_job = @job.dup
+    @new_job.display = false
+    @new_job.created_at = Time.now
+    @new_job.updated_at = Time.now
+    if @new_job.save
+      redirect_to edit_console_job_path(@new_job), :notice => 'Job is duplicated! You are editing the duplicated job!'
+    else
+      redirect_to console_jobs_path, :alert => 'Sorry, the job could not be duplicated!'
+    end
+
+  end
+
   # POST /jobs
   # POST /jobs.json
   def create

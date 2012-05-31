@@ -27,6 +27,7 @@
         %td
           = link_to 'Show', console_job_path(job), :class => 'btn'
           = link_to 'Edit', edit_console_job_path(job), :class => 'btn'
+          = link_to 'Duplicate', console_duplicate_job_path(job.id), :class => 'btn btn-inverse'
           = link_to 'Destroy', console_job_path(job), :confirm => 'Are you sure to delete this jobs?', :method => :delete, :class => 'btn btn-danger'
 
   %br
