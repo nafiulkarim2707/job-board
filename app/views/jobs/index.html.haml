@@ -17,7 +17,7 @@
       %tr
         %td
           = link_to job.company.name, company_jobs_path(job.company)
-        %td= link_to job.title, company_job_path(job.company, job)
+        %td= link_to job.title, job_details_path(job_slug(job.company.name, job.title), job)
         %td= job.requirements.html_safe
         %td
 

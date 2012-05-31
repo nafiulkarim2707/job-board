@@ -8,4 +8,8 @@ module ApplicationHelper
     will_paginate(collection, options)
   end
 
+  def job_slug(company_name, job_title)
+    (company_name.to_s + ' ' + job_title.to_s).parameterize
+  end
+
 end
