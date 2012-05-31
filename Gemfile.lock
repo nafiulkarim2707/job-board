@@ -40,6 +40,8 @@ GEM
       net-sftp (>= 2.0.0)
       net-ssh (>= 2.0.14)
       net-ssh-gateway (>= 1.1.0)
+    capistrano-ext (1.2.1)
+      capistrano (>= 1.0.0)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -151,6 +153,7 @@ GEM
     rspec2-rails-views-matchers (0.2.2)
       nokogiri (>= 1.4.4)
       rspec (>= 2.0.0)
+    rvm (1.11.3.3)
     sass (3.1.19)
     sass-rails (3.2.5)
       railties (~> 3.2.0)
@@ -191,6 +194,7 @@ PLATFORMS
 DEPENDENCIES
   autotest-rails
   capistrano
+  capistrano-ext
   coffee-rails (~> 3.2.1)
   devise
   factory_girl_rails
@@ -202,6 +206,7 @@ DEPENDENCIES
   rails-footnotes
   rspec-rails
   rspec2-rails-views-matchers
+  rvm
   sass-rails (~> 3.2.3)
   shoulda-matchers
   spork (~> 1.0rc)

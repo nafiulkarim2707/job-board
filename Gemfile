@@ -21,10 +21,8 @@ gem 'twitter-bootstrap-rails'
 gem 'will_paginate'
 
 
-
 group :development do
   gem 'rails-footnotes'
-  gem 'capistrano'
 end
 
 group :test do
@@ -37,5 +35,7 @@ group :test do
 end
 
 group :test, :development do
-
+  gem 'capistrano'
+  gem 'capistrano-ext'
+  gem 'rvm'
 end
