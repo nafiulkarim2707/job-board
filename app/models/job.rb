@@ -1,4 +1,6 @@
 class Job
+  TYPES = [ :full_time, :part_time, :telecommute, :other ]
+
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::MultiParameterAttributes

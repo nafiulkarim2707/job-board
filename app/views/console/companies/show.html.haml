@@ -1,18 +1,27 @@
-%p#notice= notice
+%section
+  .page-header
+    %h1= @company.name
 
-%p
-  %b Name:
-  = @company.name
-%p
-  %b Email:
-  = @company.email
-%p
-  %b Website:
-  = @company.website
-%p
-  %b Address:
-  = @company.address
+  .row
+    .span6
+      %p= @company.overview.html_safe
+    .span5.well.contact-info
+      .row
+        .span1
+          %strong E-mail
+        .span4
+          = @company.email
 
-= link_to 'Edit', edit_console_company_path(@company)
-\|
-= link_to 'Back', console_companies_path
+      .row
+        .span1
+          %strong Website
+        .span4
+          = link_to @company.website, @company.website
+
+      .row
+        .span1
+          %strong Address
+        .span4
+          %p= simple_format @company.address.html_safe
+
+

@@ -13,4 +13,6 @@
  *= require jquery.ui.theme
  *= require ../../../vendor/assets/stylesheets/jquery.tagsinput.css
  *= require_tree .
+ *= require console/jobs
+ *= require console/common
 */

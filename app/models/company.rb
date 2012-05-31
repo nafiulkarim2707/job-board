@@ -7,6 +7,7 @@ class Company
   field :website, type: String
   field :address, type: String
   field :overview, type: String
+  field :_id, type: String, default: -> { name.to_s.parameterize }
 
   has_many :jobs
 
