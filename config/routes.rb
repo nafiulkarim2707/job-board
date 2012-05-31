@@ -13,7 +13,7 @@ JobBoard::Application.routes.draw do
 
   devise_for :users
 
-  root :to => "public/jobs#index"
+  root :to => "jobs#index"
 
   scope '/widget' do
      match "job_list" => "widget#job_list", :as => "job_list_wiget"
@@ -23,8 +23,6 @@ JobBoard::Application.routes.draw do
     resources :jobs, :only => [:index, :show]
   end
 
-  namespace :public do
-    resources :jobs, :only => [:index, :show]
-  end
+  resources :jobs, :only => [:index]
 
 end

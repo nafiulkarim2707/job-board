@@ -3,7 +3,11 @@ class JobsController < ApplicationController
   before_filter :load_company
 
   def index
-    @jobs = Job.active.where(company_id: params[:company_id]).sort(expires_at: 1)
+    if @company.present?
+      @jobs = Job.active.where(company_id: params[:company_id]).sort(expires_at: 1)
+    else
+      @jobs = Job.active.sort(expires_at: 1)
+    end
 
     respond_to do |format|
       format.html # show.html.erb
@@ -22,6 +26,8 @@ class JobsController < ApplicationController
 
   private
     def load_company
-      @company = Company.find(params[:company_id])
+      if params[:company_id].present?
+        @company = Company.find(params[:company_id])
+      end
     end
 end

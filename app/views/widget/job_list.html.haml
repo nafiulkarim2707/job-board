@@ -7,7 +7,7 @@
   - if @jobs.present?
     - @jobs.each do |job|
       .floatmid
-        %a.jb-item{:href => '#'}
+        %a.jb-item{:href => company_job_url(job.company, job)}
           %span.jb-deadline>#{job.expires_at.strftime('%d/%m')}
           = job.title
           %span.jb-comp
@@ -16,4 +16,4 @@
   - else
     No Jobs found so far!
   .floatfoot
-    %a{:href => public_jobs_url} আরো দেখুন
+    %a{:href => jobs_url(nil)} আরো দেখুন
