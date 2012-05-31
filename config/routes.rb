@@ -21,8 +21,6 @@ JobBoard::Application.routes.draw do
     resources :jobs, :only => [:index, :show]
   end
 
-  namespace :public do
-    resources :jobs, :only => [:index, :show]
-  end
+  resources :jobs, :only => [:index]
 
 end

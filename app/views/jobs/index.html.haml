@@ -1,4 +1,8 @@
-%h1 Jobs of #{@company.name}
+- if @company.present?
+  %h1 Jobs of #{@company.name}
+- else
+  %h1 All Jobs
+
 - if @jobs.present?
   /= pagination_links(@jobs)
   %table.table.table-striped
