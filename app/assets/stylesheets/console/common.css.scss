@@ -9,3 +9,30 @@
   overflow: visible;
 }
 
+.contact-info, .job-info {
+  .page-header {
+    margin-top: 0;
+    color: #888;
+  }
+}
+
+.job-info {
+  display: table;
+  width: 100%;
+
+  .block {
+    display: table-cell;
+    background: #f0f0f0;
+    padding: 10px;
+    border-right: 1px dashed #ccc;
+    margin-right: 20px;
+
+    &:last-child {
+      border-right: none;
+    }
+
+    strong {
+      display: block;
+    }
+  }
+}

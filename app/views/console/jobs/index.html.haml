@@ -28,10 +28,10 @@
           %td
             = job.expires_at.present? ? distance_of_time_in_words_to_now(job.expires_at) : '-'
           %td
-            = link_to 'Show', console_job_path(job), :class => 'btn'
-            = link_to 'Edit', edit_console_job_path(job), :class => 'btn'
-            = link_to 'Duplicate', console_duplicate_job_path(job.id), :class => 'btn btn-inverse'
-            = link_to 'Destroy', console_job_path(job), :confirm => 'Are you sure to delete this jobs?', :method => :delete, :class => 'btn btn-danger'
+            = link_to 'Show', job_details_path(job.title.parameterize, job.id), :class => 'btn btn-mini', target: '_blank'
+            = link_to 'Edit', edit_console_job_path(job), :class => 'btn btn-mini'
+            = link_to 'Duplicate', console_duplicate_job_path(job.id), :class => 'btn btn-inverse btn-mini'
+            = link_to 'Destroy', console_job_path(job), :confirm => 'Are you sure to delete this jobs?', :method => :delete, :class => 'btn btn-danger btn-mini'
 
     %br
     /= pagination_links(@jobs)

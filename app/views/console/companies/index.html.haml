@@ -18,7 +18,7 @@
         %td{style: 'width: 30%'}= company.address
         %td
           .btn-group
-            = link_to '<i class="icon-share-alt">&nbsp;</i>Show'.html_safe, console_company_path(company), :class => 'btn btn-mini'
+            = link_to '<i class="icon-share-alt">&nbsp;</i>Show'.html_safe, company_path(company), :class => 'btn btn-mini', target: '_blank'
             = link_to '<i class="icon-pencil">&nbsp;</i>Edit'.html_safe, edit_console_company_path(company), :class => 'btn btn-mini'
             = link_to '<i class="icon-remove">&nbsp;</i>Destroy'.html_safe, console_company_path(company), :confirm => 'Are you sure?',
                       :method => :delete, :class => 'btn btn-danger btn-mini'

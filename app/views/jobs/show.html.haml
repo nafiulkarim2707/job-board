@@ -1,1 +1,45 @@
-= render 'details', :job => @job
+%section
+  .page-header
+    %h1
+      = @job.title
+      %small= @job.location
+
+  .row
+    .span6
+      .job-info
+        .block
+          %strong Salary
+          = @job.salary
+        .block
+          %strong Contract Type
+          = @job.contract_type.to_s.humanize
+
+        .block
+          %strong Job Expires in
+          %acronym{title: @job.expires_at, rel: 'tooltip'}
+            = distance_of_time_in_words_to_now @job.expires_at
+
+      %p= @job.description.html_safe
+
+      #job-details.accordion
+        - [:requirements, :additional_qualities, :instructions, :notes].each_with_index do |field, i|
+          - if strip_tags(@job.send(field).to_s).present?
+            .accordion-group
+              .accordion-heading
+                %a.accordion-toggle{'data-toggle' => 'collapse',
+                                    'data-parent' => '#job-details',
+                                    href: "##{field.to_s}"}
+                  = field.to_s.humanize
+
+              - if i == 0
+                %div.collapse.in{id: "#{field.to_s}"}
+                  .accordion-inner= @job.send(field).html_safe
+              - else
+                %div.collapse{id: "#{field.to_s}"}
+                  .accordion-inner= @job.send(field).html_safe
+
+    .span6
+      .well.contact-info
+        = render @job.company
+
+

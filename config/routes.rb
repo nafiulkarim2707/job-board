@@ -1,6 +1,5 @@
 JobBoard::Application.routes.draw do
   get "console/index", :to => 'console/dashboard#index'
-  get '/c/:company_name/:job_title', :to => 'public/jobs#by_friendly_name', :as => 'friendly_job'
 
   namespace :console do
     root :to => 'dashboard#index'
