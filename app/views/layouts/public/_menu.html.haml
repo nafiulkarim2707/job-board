@@ -11,7 +11,12 @@
         somewhere in... jobs
 
       .nav-collapse
-        %ul.nav
-          %li
+        - @pages = Page.where(:display => true)
+        - if @pages.present?
+          %ul.nav.pull-right
+            - @pages.each do |page|
+              %li
+                %a
+                  = link_to page.title, static_page_path(page._id)
 
 
