@@ -10,7 +10,7 @@
         %th Title
         %th Location
         %th Salary
-        %th Contract Type
+        %th Job Contract term
         %th Posted
         %th Expires in
         %th Visibility
@@ -21,20 +21,20 @@
           %td
             = link_to job.company.name, console_company_path(job.company)
           %td
-            = link_to job.title, console_job_path(job)
+            = link_to job.title, job_url(job), :target => :blank
           %td= job.location
           %td= job.salary
-          %td= job.contract_type.humanize
+          %td= job.contract_type
           %td
             = job.created_at.present? ? distance_of_time_in_words_to_now(job.created_at) + ' ago' : '-'
           %td
             = job.expires_at.present? ? distance_of_time_in_words(Time.now, job.expires_at) : '-'
           %td
-            = job.display == true ? 'Visible' : 'Hidden'
+            = job.display ? 'Visible' : 'Hidden'
           %td
-            = link_to 'Edit', edit_console_job_path(job), :class => 'btn'
-            = link_to 'Duplicate', console_duplicate_job_path(job.id), :class => 'btn btn-inverse'
-            = link_to 'X', console_job_path(job), :confirm => 'Are you sure to delete this jobs?', :method => :delete, :class => 'btn btn-danger'
+            = link_to 'Edit', edit_console_job_path(job), :class => 'btn btn-mini'
+            = link_to 'Copy', console_duplicate_job_path(job.id), :class => 'btn btn-inverse btn-mini'
+            = link_to 'X', console_job_path(job), :confirm => 'Are you sure to delete this jobs?', :method => :delete, :class => 'btn btn-danger btn-mini'
 
     %br
     /= pagination_links(@jobs)

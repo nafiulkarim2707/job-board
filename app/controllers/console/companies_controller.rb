@@ -10,17 +10,6 @@ class Console::CompaniesController < Console::ConsoleController
     end
   end
 
-  # GET /console/companies/1
-  # GET /console/companies/1.json
-  def show
-    @company = Company.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @company }
-    end
-  end
-
   # GET /console/companies/new
   # GET /console/companies/new.json
   def new

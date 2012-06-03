@@ -1,7 +1,7 @@
 %section.form
   .page-header
     %h1 Companies
-  - if @companies.present?
+  -if @companies.present?
     %table.table.table-striped
       %tr
         %th Name
@@ -18,13 +18,13 @@
           %td{style: 'width: 30%'}= company.address
           %td
             .btn-group
-              = link_to '<i class="icon-share-alt">&nbsp;</i>Show'.html_safe, console_company_path(company), :class => 'btn btn-mini'
+              = link_to '<i class="icon-share-alt">&nbsp;</i>Show'.html_safe, company_path(company), :class => 'btn btn-mini', target: '_blank'
               = link_to '<i class="icon-pencil">&nbsp;</i>Edit'.html_safe, edit_console_company_path(company), :class => 'btn btn-mini'
               = link_to '<i class="icon-remove">&nbsp;</i>Destroy'.html_safe, console_company_path(company), :confirm => 'Are you sure?',
                         :method => :delete, :class => 'btn btn-danger btn-mini'
   - else
     .alert.alert-warning
-      No company added so far!
+      No companies added so far!
 
   .form-actions
     = link_to '<i class="icon-plus"></i>&nbsp;Add Company'.html_safe, new_console_company_path, :class => 'btn btn-primary'
