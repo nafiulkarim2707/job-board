@@ -27,7 +27,8 @@ set :runner, user
 namespace :util do
   desc 'Symblink mongo configuration'
   task :symlink_mongo_config do
-    #run "cd #{current_path} && ln -s #{shared_path}/config/mongoid.yml #{current_path}/config/mongoid.yml"
+    run "cd #{current_path} && rm #{current_path}/config/mongoid.yml"
+    run "cd #{current_path} && ln -s #{shared_path}/config/mongoid.yml #{current_path}/config/mongoid.yml"
   end
 
 
@@ -35,8 +36,6 @@ namespace :util do
   task :assets_precompile do
     run "cd #{current_path} && rake assets:precompile RAILS_ENV=#{stage.to_s}"
   end
-
-
 end
 
 after 'deploy:update', 'util:symlink_mongo_config', 'util:assets_precompile'

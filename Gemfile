@@ -40,3 +40,7 @@ group :test, :development do
   gem 'capistrano-ext'
   gem 'rvm'
 end
+
+group :production do
+  gem 'unicorn'
+end
