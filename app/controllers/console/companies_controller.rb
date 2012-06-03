@@ -33,8 +33,8 @@ class Console::CompaniesController < Console::ConsoleController
 
     respond_to do |format|
       if @company.save
-        format.html { redirect_to [:console, @company], notice: 'Company was successfully created.' }
-        format.json { render json: console_company_path(@company), status: :created, location: @company }
+        format.html { redirect_to @company, notice: 'Company was successfully created.' }
+        format.json { render json: company_path(@company), status: :created, location: @company }
       else
         format.html { render action: "new" }
         format.json { render json: @company.errors, status: :unprocessable_entity }
@@ -49,7 +49,7 @@ class Console::CompaniesController < Console::ConsoleController
 
     respond_to do |format|
       if @company.update_attributes(params[:console_company])
-        format.html { redirect_to console_company_path(@company), notice: 'Company was successfully updated.' }
+        format.html { redirect_to company_path(@company), notice: 'Company was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
