@@ -4,6 +4,11 @@ gem 'rails', '3.2.3'
 
 gem 'mongoid', '~> 3.0.0.rc'
 gem 'devise'
+gem 'tinymce-rails' #must not be in asset group
+
+gem 'twitter-bootstrap-rails'
+gem 'will_paginate'
+gem 'unicorn'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -15,10 +20,6 @@ group :assets do
   gem 'jquery-rails'
   gem 'jquery-ui-rails'
 end
-gem 'tinymce-rails' #must not be in asset group
-
-gem 'twitter-bootstrap-rails'
-gem 'will_paginate'
 
 
 group :development do

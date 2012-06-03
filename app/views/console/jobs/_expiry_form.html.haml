@@ -1,7 +1,8 @@
 .control-group.expires
   = f.label :expires_at, class: 'control-label'
   .controls
-    = f.datetime_select :expires_at, start_year: Time.now.year, end_year: (Time.now + 2.years).year, minute_step: 15, hour_step: 3
+    = f.datetime_select :expires_at, start_year: Time.now.year, end_year: (Time.now + 2.years).year,
+      minute_step: 15, hour_step: 3, :default => 7.days.from_now
 
 .control-group
   = f.label :display, 'Visibility', class: 'control-label'

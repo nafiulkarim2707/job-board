@@ -18,16 +18,16 @@ set :deploy_via, :remote_cache
 #set :deploy_via, :copy
 #set :scm, 'none'
 #set :repository, '.'
-set :repository, "git@github.com:rajuru/job-board.git"
+set :repository, "git://github.com/rajuru/job-board.git"
 set :branch, "master"
 set :runner, user
 
-set :use_sudo, true
+#set :use_sudo, true
 
 namespace :util do
   desc 'Symblink mongo configuration'
   task :symlink_mongo_config do
-    run "cd #{current_path} && ln -s #{shared_path}/config/mongoid.yml #{current_path}/config/mongoid.yml"
+    #run "cd #{current_path} && ln -s #{shared_path}/config/mongoid.yml #{current_path}/config/mongoid.yml"
   end
 
 

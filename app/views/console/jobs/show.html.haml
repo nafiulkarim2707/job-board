@@ -2,7 +2,7 @@
   %h1 Job Details
   %p#notice= notice
   %h3 Company
-  %pre= link_to @job.company.name, console_company_path(@job)
+  %pre= link_to @job.company.name, console_company_path(@job.company)
   %p
   %h3 Title:
   %pre= @job.title
@@ -11,25 +11,25 @@
   %pre= @job.location
   %p
   %h3 Description:
-  %pre= @job.description
+  %pre= @job.description.html_safe
   %p
   %h3 Requirements:
-  %pre= @job.requirements
+  %pre= @job.requirements.html_safe
   %p
   %h3 Additional qualities:
-  %pre= @job.additional_qualities
+  %pre= @job.additional_qualities.html_safe
   %p
   %h3 Salary:
   %pre= @job.salary
   %p
   %h3 Instructions:
-  %pre= @job.instructions
+  %pre= @job.instructions.html_safe
   %p
   %h3 Job Contract type:
-  %pre= @job.contract_type
+  %pre= @job.contract_type.humanize
   %p
   %h3 Notes:
-  %pre= @job.notes
+  %pre= @job.notes.html_safe
   %p
   %h3 display:
   %pre= @job.display

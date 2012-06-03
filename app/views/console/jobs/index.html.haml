@@ -10,28 +10,31 @@
         %th Title
         %th Location
         %th Salary
-        %th Job Contract term
+        %th Contract Type
         %th Posted
         %th Expires in
+        %th Visibility
         %th Actions
 
       - @jobs.each do |job|
         %tr
           %td
             = link_to job.company.name, console_company_path(job.company)
-          %td= job.title
+          %td
+            = link_to job.title, console_job_path(job)
           %td= job.location
           %td= job.salary
-          %td= job.contract_type
+          %td= job.contract_type.humanize
           %td
             = job.created_at.present? ? distance_of_time_in_words_to_now(job.created_at) + ' ago' : '-'
           %td
-            = job.expires_at.present? ? distance_of_time_in_words_to_now(job.expires_at) : '-'
+            = job.expires_at.present? ? distance_of_time_in_words(Time.now, job.expires_at) : '-'
           %td
-            = link_to 'Show', console_job_path(job), :class => 'btn'
+            = job.display == true ? 'Visible' : 'Hidden'
+          %td
             = link_to 'Edit', edit_console_job_path(job), :class => 'btn'
             = link_to 'Duplicate', console_duplicate_job_path(job.id), :class => 'btn btn-inverse'
-            = link_to 'Destroy', console_job_path(job), :confirm => 'Are you sure to delete this jobs?', :method => :delete, :class => 'btn btn-danger'
+            = link_to 'X', console_job_path(job), :confirm => 'Are you sure to delete this jobs?', :method => :delete, :class => 'btn btn-danger'
 
     %br
     /= pagination_links(@jobs)
