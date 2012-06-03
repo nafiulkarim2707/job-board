@@ -22,7 +22,7 @@ JobBoard::Application.routes.draw do
     resources :jobs, :only => [:index, :show]
   end
 
-  match '/:slug/:id', :to => 'jobs#show', :as => 'job_details'
+  match '/jobs/:slug/:id', :to => 'jobs#show', :as => 'job_details'
 
   resources :jobs, :only => [:index]
 
