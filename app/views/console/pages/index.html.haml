@@ -1,0 +1,27 @@
+%section
+  .page-header
+    %h1 Static Pages
+
+  -if @pages.present?
+    %table.table.table-striped
+      %tr
+        %th Title
+        %th Content
+        %th Visibility
+        %th
+
+      - @pages.each do |page|
+        %tr
+          %td= page.title
+          %td= page.content.html_safe
+          %td= page.display ? 'Display' : 'Hidden'
+          %td
+            = link_to 'Show', console_page_path(page), :class => 'btn'
+            = link_to 'Edit', edit_console_page_path(page), :class => 'btn'
+            = link_to 'X', console_page_path(page), :confirm => 'Are you sure?', :method => :delete, :class => 'btn btn-danger'
+
+    %br
+  - else
+    .alert.alert-warning
+      No pages added so far!
+  = link_to 'New Page', new_console_page_path, :class => 'btn btn-primary'

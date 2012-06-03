@@ -1,4 +1,6 @@
 JobBoard::Application.routes.draw do
+  get "static/(:page)", :to => 'static#index', :as => 'static_page'
+
   get "console/index", :to => 'console/dashboard#index'
 
   namespace :console do
@@ -7,6 +9,7 @@ JobBoard::Application.routes.draw do
     resources :companies
     match '/jobs/clone/:id', :to => 'jobs#duplicate', :as => 'duplicate_job'
     resources :jobs
+    resources :pages
 
   end
 

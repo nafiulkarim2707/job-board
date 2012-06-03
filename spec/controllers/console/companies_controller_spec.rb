@@ -5,14 +5,14 @@ describe Console::CompaniesController do
 
   describe '#index' do
     let!(:companies) { 2.times.map { |n| FactoryGirl.create(:company) } }
-    before { get :index }
+    before { get :aboutus }
     subject { response }
 
     it 'should assign companies' do
       assigns(:companies).map(&:id).should == companies.map(&:id)
     end
 
-    it { should render_template(:index) }
+    it { should render_template(:aboutus) }
 
   end
 
