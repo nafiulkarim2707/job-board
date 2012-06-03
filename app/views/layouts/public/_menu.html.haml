@@ -16,7 +16,6 @@
           %ul.nav.pull-right
             - @pages.each do |page|
               %li
-                %a
-                  = link_to page.title, static_page_path(page._id)
+                = link_to page.title, static_page_path(page._id)
 
 
