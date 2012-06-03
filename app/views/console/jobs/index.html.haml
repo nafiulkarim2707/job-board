@@ -1,0 +1,45 @@
+%section
+  .page-header
+    %h1 Job Postings
+
+  - if @jobs.present?
+    /= pagination_links(@jobs)
+    %table.table.table-striped
+      %tr
+        %th Company
+        %th Title
+        %th Location
+        %th Salary
+        %th Job Contract term
+        %th Posted
+        %th Expires in
+        %th Visibility
+        %th Actions
+
+      - @jobs.each do |job|
+        %tr
+          %td
+            = link_to job.company.name, console_company_path(job.company)
+          %td
+            = link_to job.title, job_url(job), :target => :blank
+          %td= job.location
+          %td= job.salary
+          %td= job.contract_type
+          %td
+            = job.created_at.present? ? distance_of_time_in_words_to_now(job.created_at) + ' ago' : '-'
+          %td
+            = job.expires_at.present? ? distance_of_time_in_words(Time.now, job.expires_at) : '-'
+          %td
+            = job.display ? 'Visible' : 'Hidden'
+          %td
+            = link_to 'Edit', edit_console_job_path(job), :class => 'btn btn-mini'
+            = link_to 'Copy', console_duplicate_job_path(job.id), :class => 'btn btn-inverse btn-mini'
+            = link_to 'X', console_job_path(job), :confirm => 'Are you sure to delete this jobs?', :method => :delete, :class => 'btn btn-danger btn-mini'
+
+    %br
+    /= pagination_links(@jobs)
+  - else
+    .alert.alert-warning
+      No Jobs added so far!
+  %br
+  = link_to '<i class="icon-plus">&nbsp;</i>New Job'.html_safe, new_console_job_path, :class => 'btn btn-primary'

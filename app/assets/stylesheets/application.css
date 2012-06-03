@@ -9,5 +9,10 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require jquery.ui.core
+ *= require jquery.ui.theme
+ *= require ../../../vendor/assets/stylesheets/jquery.tagsinput.css
  *= require_tree .
+ *= require console/jobs
+ *= require console/common
 */

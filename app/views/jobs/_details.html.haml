@@ -1,0 +1,78 @@
+.row-fluid
+  =link_to '<< view all', jobs_path
+  %table.table.table-bordered
+    %tr
+      %th{colspan: 2}
+        %h1
+          = @job.title
+
+    - if @job.description.present?
+      %tr
+        %th
+          %h3
+            Description
+        %td
+          =@job.description.html_safe
+
+    - if @job.requirements.present?
+      %tr
+        %th
+          %h3
+            Requirements
+          %br/
+          %td
+            =@job.requirements.html_safe
+
+    - if @job.additional_qualities.present?
+      %tr
+        %th
+          %h3
+            Additional qualities
+          %td
+            =@job.additional_qualities.html_safe
+
+
+    - if @job.salary.present?
+      %tr
+        %th
+          %h3
+            Salary
+        %td
+          =@job.salary
+
+    - if @job.instructions.present?
+      %tr
+        %td
+          %h3
+            Instructions
+          =@job.instructions.html_safe
+
+    - if @job.contract_type.present?
+      %tr
+        %th
+          %h3
+            Contract Type
+        %td
+          =@job.contract_type.html_safe
+
+    - if @job.notes.present?
+      %tr
+        %th
+          %h3
+            Notes
+        %td
+          =@job.notes.html_safe
+
+
+    - if @job.expires_at.present?
+      %tr
+        %th
+          %h3
+            Expires
+        %td
+          #{@job.expires_at.strftime('%d/%m/%Y %H:%M')}
+
+    %tr
+      %td= link_to '<< view all listing', jobs_path
+      %td= link_to "<< view all #{@job.company.name} listing", company_jobs_path(@job.company)
+

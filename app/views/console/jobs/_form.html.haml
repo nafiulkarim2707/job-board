@@ -1,0 +1,34 @@
+= form_for([:console, @job], :html => { :class => 'form-horizontal' }) do |f|
+  -if @job.errors.any?
+    .offset1
+      #error_explanation.well
+        %h2= "#{pluralize(@job.errors.count, "error")} prohibited this job from being saved:"
+        %ul
+          - @job.errors.full_messages.each do |msg|
+            %li= msg
+  .tabbable
+    %ul.nav.nav-tabs
+      %li.active
+        %a.active{'data-toggle' => "tab", href: '#tab-basic-info'}
+          Basic Info
+      %li
+        %a{href: '#tab-details', 'data-toggle' => "tab"} Details
+      %li
+        %a{href: '#tab-instruction', 'data-toggle' => "tab"} Instruction
+      %li
+        %a{href: '#tab-expiry', 'data-toggle' => "tab"} Expiry
+
+    .tab-content
+      #tab-basic-info.active.tab-pane
+        = render 'basic_form', :f => f
+
+      #tab-details.tab-pane
+        = render 'details_form', :f => f
+
+      #tab-instruction.tab-pane
+        = render 'instruction_form', :f => f
+
+      #tab-expiry.tab-pane
+        = render 'expiry_form', :f => f
+
+
