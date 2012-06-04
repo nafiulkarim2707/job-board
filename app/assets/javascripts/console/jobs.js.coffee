@@ -10,5 +10,3 @@ jQuery ->
       plugins: "autolink,lists,spellchecker,advlink,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template"
 
   $('#job_tags').tagsInput
-    width: '90%',
-    height: '40px'

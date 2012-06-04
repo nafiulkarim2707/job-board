@@ -44,6 +44,12 @@
     .span6
       .well.contact-info
         = render @job.company
+      - if @job.tags.present?
+        %ul.tags
+          - @job.tags.split(',').each do |tag|
+            %li
+              = tag
+
     = content_for(:title) do
       = "#{@job.title} at #{@job.company.name}"
 
