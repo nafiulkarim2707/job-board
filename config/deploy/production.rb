@@ -21,6 +21,7 @@ namespace :util do
     desc 'Stop unicorn server'
     task :stop do
       run "cd #{current_path} && cat tmp/pids/unicorn.pid | xargs -I% kill -9 % ; true"
+      run "cd #{current_path} && cat tmp/pids/unicorn.pid | xargs -I% kill -9 % ; true"
     end
   end
 end

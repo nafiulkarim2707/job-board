@@ -1,5 +1,5 @@
 ENV['rvm_path']||="~/.rvm"
-$:.unshift(File.expand_path('./lib', ENV['rvm_path']))
+#$:.unshift(File.expand_path('./lib', ENV['rvm_path']))
 
 require 'capistrano/ext/multistage'
 require 'rvm/capistrano'
