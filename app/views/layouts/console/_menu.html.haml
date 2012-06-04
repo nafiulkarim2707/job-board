@@ -6,7 +6,7 @@
         %span.icon-bar
         %span.icon-bar
 
-      %a.brand(href="#")
+      %a.brand(href=console_root_path)
         %img{src: '/assets/logo.png', height: '30px'}
         somewhere in... jobs
 
@@ -14,5 +14,9 @@
         %ul.nav
           %li#console-companies= link_to "Companies", :console_companies
           %li#console-jobs= link_to "Jobs", :console_jobs
-          %li#console-jobs= link_to "Pages", :console_pages
+          %li#console-pages= link_to "Pages", :console_pages
+
+        %ul.nav.pull-right
+          %li
+            = link_to 'Main Site', root_path
 

@@ -18,8 +18,8 @@
       - @jobs.each do |job|
         %tr
           %td
-            = link_to job.company.name, company_jobs_path(job.company)
-          %td= link_to job.title, company_job_path(job.company, job)
+            = link_to job.company.name, company_path(job.company)
+          %td= link_to job.title, job_url(job)
           %td= job.requirements.html_safe
           %td
 
