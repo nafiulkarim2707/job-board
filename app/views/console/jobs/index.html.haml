@@ -24,11 +24,14 @@
             = link_to job.title, job_url(job), :target => :blank
           %td= job.location
           %td= job.salary
-          %td= job.contract_type
+          %td= job.contract_type.humanize
           %td
             = job.created_at.present? ? distance_of_time_in_words_to_now(job.created_at) + ' ago' : '-'
           %td
-            = job.expires_at.present? ? distance_of_time_in_words(Time.now, job.expires_at) : '-'
+            - if job.expires_at > Time.now
+              = job.expires_at.present? ? distance_of_time_in_words(Time.now, job.expires_at) : '-'
+            - else
+              = job.expires_at
           %td
             = job.display ? 'Visible' : 'Hidden'
           %td

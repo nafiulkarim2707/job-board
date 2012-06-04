@@ -1,4 +1,6 @@
 class Console::JobsController < Console::ConsoleController
+  include UrlHelper
+
   # GET /jobs
   # GET /jobs.json
   def index
@@ -48,8 +50,8 @@ class Console::JobsController < Console::ConsoleController
     @job = @company.jobs.new(params[:job].except(:company_id))
     respond_to do |format|
       if @job.save
-        format.html { redirect_to console_job_path(@job), notice: 'Job was successfully created.' }
-        format.json { render json: console_job_path(@job), status: :created, location: @job }
+        format.html { redirect_to job_url(@job), notice: 'Job was successfully created.' }
+        format.json { render json: job_url(@job), status: :created, location: @job }
       else
         format.html { render action: "new" }
         format.json { render json: @job.errors, status: :unprocessable_entity }
@@ -63,7 +65,7 @@ class Console::JobsController < Console::ConsoleController
     @job = Job.find(params[:id])
     respond_to do |format|
       if @job.update_attributes(params[:job])
-        format.html { redirect_to console_job_path(@job), notice: 'Job was successfully updated.' }
+        format.html { redirect_to job_url(@job), notice: 'Job was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
