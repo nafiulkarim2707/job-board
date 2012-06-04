@@ -11,7 +11,8 @@
 
       - if @company.jobs.present?
         .page-header
-          %h3 Recent Jobs
+          %h3
+            = t(:recent_jobs)
 
         %ul
           - @company.jobs.each do |job|
@@ -20,6 +21,7 @@
               %span.muted= job.location
 
 
-
+  = content_for(:title) do
+    = "#{@company.name}"
 
 

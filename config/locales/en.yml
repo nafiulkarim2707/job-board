@@ -6,6 +6,13 @@ en:
   instructions: 'how to apply'
   requirements: 'mandatory requirements'
   additional_qualities: 'additional qualities'
+  notes: 'notes'
   salary: 'salary'
   contract_type: 'contract type'
   expires_in: 'expires in'
+
+  company: 'company'
+  title: 'job title'
+
+  company_information: 'company information'
+  recent_jobs: 'recent jobs'

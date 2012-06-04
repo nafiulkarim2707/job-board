@@ -44,5 +44,8 @@
     .span6
       .well.contact-info
         = render @job.company
+    = content_for(:title) do
+      = "#{@job.title} at #{@job.company.name}"
+
 
 

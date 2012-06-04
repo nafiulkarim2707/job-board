@@ -1,26 +1,27 @@
 .page-header
-  %h3 Company Information
+  %h3
+    = t(:company_information)
 
 .row
   .span1
-    %strong Company
+    %strong company
   .span4
     = link_to company.name, company_url(company)
 
 .row
   .span1
-    %strong E-mail
+    %strong email
   .span4
     = link_to company.email, "mailto:#{company.email}"
 
 .row
   .span1
-    %strong Website
+    %strong website
   .span4
     = link_to company.website, company.website
 
 .row
   .span1
-    %strong Address
+    %strong address
   .span4
-    %p= simple_format company.address.html_safe
+    = simple_format company.address.html_safe
