@@ -3,3 +3,9 @@
 
 en:
   hello: "Hello world"
+  instructions: 'how to apply'
+  requirements: 'mandatory requirements'
+  additional_qualities: 'additional qualities'
+  salary: 'salary'
+  contract_type: 'contract type'
+  expires_in: 'expires in'

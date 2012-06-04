@@ -8,15 +8,18 @@
     .span6
       .job-info
         .block
-          %strong Salary
+          %strong
+            = t(:salary)
           = @job.salary
         .block
-          %strong Contract Type
-          = @job.contract_type.to_s.humanize
+          %strong
+            = t(:contract_type)
+          = @job.contract_type.to_s.humanize.downcase
 
         .block
-          %strong Job Expires in
-          %acronym{title: @job.expires_at, rel: 'tooltip'}
+          %strong
+            = t(:expires_in)
+          %acronym{title: l(@job.expires_at), rel: 'tooltip'}
             = distance_of_time_in_words_to_now @job.expires_at
 
       %p= @job.description.html_safe
@@ -29,7 +32,7 @@
                 %a.accordion-toggle{'data-toggle' => 'collapse',
                                     'data-parent' => '#job-details',
                                     href: "##{field.to_s}"}
-                  = field.to_s.humanize
+                  = t(field.to_s)
 
               - if i == 0
                 %div.collapse.in{id: "#{field.to_s}"}
