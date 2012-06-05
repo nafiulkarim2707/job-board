@@ -45,10 +45,10 @@
       .well.contact-info
         = render @job.company
       - if @job.tags.present?
-        %ul.tags
-          - @job.tags.split(',').each do |tag|
-            %li
-              = tag.downcase
+        - @job.tags.split(',').each do |tag|
+          .label{style: 'margin-right: 5px;margin-bottom: 5px; float:left;'}
+            = tag
+      .clearfix
 
     = content_for(:title) do
       = "#{@job.title} at #{@job.company.name}"
