@@ -7,19 +7,19 @@
           %li= msg
 
   .control-group
-    = f.label :title, class: 'control-label'
+    = f.label :title, 'page.title', class: 'control-label'
     .controls
       = f.text_field :title, class: 'input-xxlarge'
 
   .control-group
-    = f.label :content, class: 'control-label'
+    = f.label :content, 'page content', class: 'control-label'
     .controls
       = f.text_area :content, class: 'rich-editor input-xxlarge'
 
   .control-group
-    = f.label :display, class: 'control-label'
+    = f.label :display, 'display', class: 'control-label'
     .controls
       = f.check_box :display
 
   .form-actions
-    = f.submit 'Save', :class => 'btn btn-primary btn-large'
+    = f.submit ' save', :class => 'btn btn-primary btn-large '
