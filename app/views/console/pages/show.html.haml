@@ -1,15 +1,16 @@
 %p#notice= notice
 
 %p
-  %b Title:
+  %b page title:
   = @page.title
 %p
-  %b Content:
-  = @page.content.html_safe
+  %b content:
+  %div
+    = @page.content.html_safe
 %p
-  %b Display:
-  = @page.display
+  %b visibility:
+  = @page.display ? 'visible' : 'hidden'
 
-= link_to 'Edit', edit_console_page_path(@page)
+= link_to ' edit', edit_console_page_path(@page), :class => 'btn icon-edit'
 \|
-= link_to 'Back', console_pages_path
+= link_to ' back', console_pages_path, :class => 'btn icon-arrow-left'

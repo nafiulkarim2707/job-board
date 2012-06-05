@@ -48,7 +48,7 @@
         %ul.tags
           - @job.tags.split(',').each do |tag|
             %li
-              = tag
+              = tag.downcase
 
     = content_for(:title) do
       = "#{@job.title} at #{@job.company.name}"

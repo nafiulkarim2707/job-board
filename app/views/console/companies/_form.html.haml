@@ -8,29 +8,29 @@
             %li= msg
 
   .control-group
-    = f.label :name, :class => 'control-label'
+    = f.label :name, 'name', :class => 'control-label'
     .controls
       = f.text_field :name, class: 'input-xxlarge'
 
   .control-group
-    = f.label :email, :class => 'control-label'
+    = f.label :email, 'email', :class => 'control-label'
     .controls
       .input-prepend
         %span.add-on.muted @
         = f.email_field :email
 
   .control-group
-    = f.label :website, class: 'control-label'
+    = f.label :website, 'website', class: 'control-label'
     .controls
       = f.url_field :website, class: 'input-xxlarge'
 
   .control-group
-    = f.label :address, class: 'control-label'
+    = f.label :address, 'address', class: 'control-label'
     .controls
       = f.text_area :address, class: 'input-xxlarge', rows: 4
 
   .control-group
-    = f.label :overview, class: 'control-label'
+    = f.label :overview, 'overview', class: 'control-label'
 
     .controls
       = f.text_area :overview, class: 'rich-editor input-xxlarge'
@@ -38,4 +38,4 @@
   .form-actions
     %a.btn.btn-large{type: 'button', href: console_companies_path}
       Cancel
-    = f.submit 'Save', :class => 'btn btn-primary btn-large'
+    = f.submit ' save', :class => 'btn btn-primary btn-large icon-ok'
