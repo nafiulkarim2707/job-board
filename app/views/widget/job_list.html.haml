@@ -1,18 +1,15 @@
 = stylesheet_link_tag 'widget'
 
-.floatbox.alt1{style: 'width: 200px'}
-  .floathead{:style => "text-align: left"}
-    %h1 চাকুরী বোর্ড
-  - if @jobs.present?
-    .floatmid
-      - @jobs.each do |job|
-        %a.jb-item{:href => job_url(job)}
-          %span.jb-deadline #{job.expires_at.strftime('%d/%m')}
-          = job.title
-          %span.jb-comp= job.company.name
+- if @jobs.present?
+  .floatmid
+    - @jobs.each do |job|
+      %a.jb-item{:href => job_url(job), :target => '_blank'}
+        %span.jb-deadline #{job.expires_at.strftime('%d/%m')}
+        = job.title
+        %span.jb-comp= job.company.name
 
-  - else
-    No available position!
+- else
+  No available position!
 
-  .floatfoot
-    %a{:href => jobs_url(nil)} আরো দেখুন
+.alt1.floatfoot
+  %a{:href => jobs_url(nil), :target => '_blank'} আরো দেখুন

@@ -16,3 +16,6 @@ en:
 
   company_information: 'company information'
   recent_jobs: 'recent jobs'
+
+  page:
+    title: 'page title'

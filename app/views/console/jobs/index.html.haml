@@ -1,20 +1,19 @@
 %section
   .page-header
-    %h1 Job Postings
+    %h1 job postings
 
   - if @jobs.present?
     /= pagination_links(@jobs)
     %table.table.table-striped
       %tr
-        %th Company
-        %th Title
-        %th Location
-        %th Salary
-        %th Job Contract term
-        %th Posted
-        %th Expires in
-        %th Visibility
-        %th Actions
+        %th company
+        %th title
+        %th salary
+        %th type
+        %th posted
+        %th expires in
+        %th visibility
+        %th actions
 
       - @jobs.each do |job|
         %tr
@@ -22,9 +21,10 @@
             = link_to job.company.name, console_company_path(job.company)
           %td
             = link_to job.title, job_url(job), :target => :blank
-          %td= job.location
+            %small
+              = job.location
           %td= job.salary
-          %td= job.contract_type.humanize
+          %td= job.contract_type.humanize.downcase
           %td
             = job.created_at.present? ? distance_of_time_in_words_to_now(job.created_at) + ' ago' : '-'
           %td
@@ -33,16 +33,16 @@
             - else
               = job.expires_at
           %td
-            = job.display ? 'Visible' : 'Hidden'
+            = job.display ? 'visible' : 'hidden'
           %td
-            = link_to 'Edit', edit_console_job_path(job), :class => 'btn btn-mini'
-            = link_to 'Copy', console_duplicate_job_path(job.id), :class => 'btn btn-inverse btn-mini'
-            = link_to 'X', console_job_path(job), :confirm => 'Are you sure to delete this jobs?', :method => :delete, :class => 'btn btn-danger btn-mini'
+            = link_to ' edit', edit_console_job_path(job), :class => 'btn btn-mini icon-edit'
+            = link_to ' copy', console_duplicate_job_path(job.id), :class => 'btn btn-inverse btn-mini icon-plus-sign'
+            = link_to ' delete', console_job_path(job), :confirm => 'are you sure to delete this jobs?', :method => :delete, :class => 'btn btn-danger btn-mini icon-minus-sign'
 
     %br
     /= pagination_links(@jobs)
   - else
     .alert.alert-warning
-      No Jobs added so far!
+      no jobs added so far!
   %br
-  = link_to '<i class="icon-plus">&nbsp;</i>New Job'.html_safe, new_console_job_path, :class => 'btn btn-primary'
+  = link_to ' new job'.html_safe, new_console_job_path, :class => 'btn btn-primary icon-plus-sign'
