@@ -1,0 +1,30 @@
+/* team */
+  nhm tanveer hossain khan
+  project lead, refactor
+  contact: hasan [at] somewherein.net
+  twitter: @we4tecth
+  
+  nafiul karim
+  widget master, frontend
+  contact: nafi [at] somewherein.net
+  twitter: @nafiboss
+
+  murshed ahmed khan
+  server administration, site integration
+  contact: murshed@somewherein.net
+  twitter: @usamurai
+
+  saidur rahman bijon
+  hatcing
+  contact: bijon [at] somewherein.net
+  twitter: @bijon
+
+  ryan ahmed
+  css
+  contact: ryan [at] somewherein.net
+
+  mohammad zakir hossain
+  backend, deployment
+  contact: raju [at] somewherein.net
+  twitter: @thehungrycoder
+
