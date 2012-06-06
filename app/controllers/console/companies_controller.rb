@@ -48,7 +48,7 @@ class Console::CompaniesController < Console::ConsoleController
     @company = Company.find(params[:id])
 
     respond_to do |format|
-      if @company.update_attributes(params[:console_company])
+      if @company.update_attributes(params[:company])
         format.html { redirect_to company_path(@company), notice: 'Company was successfully updated.' }
         format.json { head :no_content }
       else

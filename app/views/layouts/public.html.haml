@@ -13,7 +13,7 @@
     %link(href="images/apple-touch-icon.png" rel="apple-touch-icon")
     %link(href="images/apple-touch-icon-72x72.png" rel="apple-touch-icon" sizes="72x72")
     %link(href="images/apple-touch-icon-114x114.png" rel="apple-touch-icon" sizes="114x114")
-
+    = yield :og_tags
   %body
     .container
       = render 'layouts/public/header'
@@ -24,7 +24,7 @@
       %hr
       %p.muted{align: 'center'}
         %b &copy;
-        = image_tag 'http://www.somewherein.net/wp-content/themes/Gaia/data/1322638412_swilogo-184x29.gif',
+        = image_tag image_path('logo.gif'),
                     title: 'somewhere in net ltd'
 
         = Time.now.year

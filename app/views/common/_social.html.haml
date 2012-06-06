@@ -1,0 +1,20 @@
+.well
+  .page-header
+    %h3
+      share with your network
+  %p
+    %small
+      share this opening to your friends who may be interested!
+
+  .addthis_toolbox.addthis_default_style
+    %a.addthis_button_facebook
+    %a.addthis_button_twitter
+    %a.addthis_button_linkedin
+    %a.addthis_button_pinterest
+    %a.addthis_button_email
+    %a.addthis_button_compact
+    %a.addthis_counter.addthis_bubble_style
+  %script{:src => "http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4fcedad7391589e1", :type => "text/javascript"}
+  %h5
+    share this url
+  %input{:type => "text", :value => "#{job_url(job)}", :style => "width: 95%", :onfocus => "this.select()"}

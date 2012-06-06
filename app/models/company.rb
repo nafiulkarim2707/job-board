@@ -8,6 +8,7 @@ class Company
   field :address, type: String
   field :overview, type: String
   field :_id, type: String, default: -> { name.to_s.parameterize }
+  field :linkedin_key, type: String
 
   has_many :jobs, :dependent => :delete
 

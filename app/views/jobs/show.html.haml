@@ -5,7 +5,7 @@
       %small= @job.location
 
   .row
-    .span6
+    .span7
       .job-info
         .block
           %strong
@@ -41,7 +41,8 @@
                 %div.collapse{id: "#{field.to_s}"}
                   .accordion-inner= @job.send(field).html_safe
 
-    .span6
+    .span5
+      = render 'apply', :job => @job
       .well.contact-info
         = render @job.company
       - if @job.tags.present?
@@ -49,9 +50,17 @@
           .label{style: 'margin-right: 5px;margin-bottom: 5px; float:left;'}
             = tag
       .clearfix
+      %br/
+      .row-fluid
+        = render 'common/social', :job => @job
+      .clearfix
 
     = content_for(:title) do
       = "#{@job.title} at #{@job.company.name}"
-
+    = content_for(:og_tags) do
+      %meta{property: "og:title", content: "#{@job.title} at #{@job.company.name}  - somewhere in...jobs"}
+      %meta{property: "og:type", content: "website"}
+      %meta{property: "og:url", content: job_url(@job)}
+      %meta{property: "og:image", content: image_path('logo.gif')}
 
 

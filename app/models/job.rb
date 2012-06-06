@@ -19,7 +19,7 @@ class Job
   field :expires_at, type: Time
   field :display, type: Boolean, default: true
   field :tags, type: String
-
+  field :vacancies, type: Integer
   validates :title, :presence => true
   validates :description, :presence => true
   validates :requirements, :presence => true
