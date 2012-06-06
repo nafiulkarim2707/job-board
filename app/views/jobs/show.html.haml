@@ -25,7 +25,7 @@
       %p= @job.description.html_safe
 
       #job-details.accordion
-        - [:requirements, :additional_qualities, :instructions, :notes].each_with_index do |field, i|
+        - [:requirements, :additional_qualities, :notes].each_with_index do |field, i|
           - if strip_tags(@job.send(field).to_s).present?
             .accordion-group
               .accordion-heading
