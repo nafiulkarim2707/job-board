@@ -23,6 +23,13 @@
   .controls
     = f.text_field :salary, class: 'input-small'
 
+.control-group
+  = f.label :vacancies, class: 'control-label'
+  .controls
+    = f.number_field :vacancies, class: 'input-small', min: 1
+
 
 .form-actions.navbar-fixed-bottom
   %a.btn.btn-primary{href: '#tab-details', 'data-toggle' => 'tab', type: 'button'} Next Details &gt;
+  - if !@job.new_record?
+    = f.submit 'Save Job', class: 'btn btn-primary btn-large'

@@ -11,3 +11,5 @@
 .form-actions.navbar-fixed-bottom
   %a.btn.btn-warning{href: '#tab-details', 'data-toggle' => 'tab', type: 'button'} &lt; Previous Details
   %a.btn.btn-primary{href: '#tab-expiry', 'data-toggle' => 'tab', type: 'button'} Next Expiry &gt;
+  - if !@job.new_record?
+    = f.submit 'Save Job', class: 'btn btn-primary btn-large'

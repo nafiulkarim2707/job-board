@@ -2,6 +2,8 @@ class JobsController < ApplicationController
   layout 'public'
   before_filter :load_company
 
+  caches_page :index, :show
+
   def index
     if @company.present?
       @jobs = Job.active.where(company_id: params[:company_id]).sort(expires_at: 1)
@@ -14,6 +16,7 @@ class JobsController < ApplicationController
       format.json { render json: @job }
     end
   end
+
 
   def show
     @job = Job.find(params[:id])

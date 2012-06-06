@@ -1,6 +1,8 @@
 class CompaniesController < ApplicationController
   layout 'public'
 
+  caches_page :show
+
   def show
     @company = Company.find(params[:id])
 

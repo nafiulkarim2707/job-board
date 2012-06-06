@@ -7,6 +7,11 @@
   .row
     .span7
       .job-info
+        - if @job.vacancies.present?
+          .block
+            %strong
+              = t(:vacancies)
+            = @job.vacancies
         .block
           %strong
             = t(:salary)
@@ -27,19 +32,8 @@
       #job-details.accordion
         - [:requirements, :additional_qualities, :notes].each_with_index do |field, i|
           - if strip_tags(@job.send(field).to_s).present?
-            .accordion-group
-              .accordion-heading
-                %a.accordion-toggle{'data-toggle' => 'collapse',
-                                    'data-parent' => '#job-details',
-                                    href: "##{field.to_s}"}
-                  = t(field.to_s)
-
-              - if i == 0
-                %div.collapse.in{id: "#{field.to_s}"}
-                  .accordion-inner= @job.send(field).html_safe
-              - else
-                %div.collapse{id: "#{field.to_s}"}
-                  .accordion-inner= @job.send(field).html_safe
+            %h4= t(field.to_s)
+            %p= @job.send(field).html_safe
 
     .span5
       = render 'apply', :job => @job

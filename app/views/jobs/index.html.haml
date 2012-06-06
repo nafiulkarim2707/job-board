@@ -17,7 +17,6 @@
           = t(:requirements)
         %th
           = t(:expires_in)
-        %th
 
       - @jobs.each do |job|
         %tr
@@ -37,6 +36,7 @@
             - else
               %span
                 #{job.expires_at.strftime('%d/%m/%Y %H:%M')}
+
 
     %br
     /= pagination_links(@jobs)

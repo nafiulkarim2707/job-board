@@ -10,6 +10,7 @@ en:
   salary: 'salary'
   contract_type: 'contract type'
   expires_in: 'expires in'
+  vacancies: 'vacancies'
 
   company: 'company'
   title: 'job title'
