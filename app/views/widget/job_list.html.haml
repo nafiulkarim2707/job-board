@@ -2,11 +2,14 @@
 
 - if @jobs.present?
   .floatmid
-    - @jobs.each do |job|
-      %a.jb-item{:href => job_url(job), :target => '_blank'}
-        %span.jb-deadline #{job.expires_at.strftime('%d/%m')}
-        = job.title
-        %span.jb-comp= job.company.name
+    .jobs
+      - @jobs.each do |job|
+        .job
+          %a{:href => job_url(job), :target => '_blank'}
+            %strong
+              = job.title
+          .comp-name= job.company.name
+          .job-loc= job.location
 
 - else
   No available position!
