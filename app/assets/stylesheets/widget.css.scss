@@ -5,55 +5,28 @@
   }
 }
 
-a {
-  &.jb-item {
-    display: block;
-    margin-bottom: 10px;
-    border-left: 0px solid #FFF;
-    overflow: hidden;
-    padding: 5px;
-    color: #000;
-    border-top: 1px solid #FFF;
-    border-right: 0px solid #FFF;
-    border-bottom: 1px solid #FFF;
-  }
 
-  &.jb-comp {
-    font: bold 13px Arial, Helvetica, sans-serif;
-    color: #999999;
-    display: block;
-    clear: both;
-    text-align: left;
-    margin-top: 5px;
-  }
-  &.jb-deadline {
-    display: block;
-    padding: 3px;
-    float: right;
-    background-color: #EFEFEF;
-    border-radius: 6px;
-    font-size: 14px;
-    text-align: center;
-    min-width: 40px;
-  }
-  &.jb-item:hover {
-    text-decoration: none;
-    background-color: #F7FEDA;
-    border-color: #DBEB9C;
-  }
-  &:hover .jb-deadline {
-    color: #FFF;
-    background-color: #94C632;
-  }
-}
 
-.alt1 .floatfoot {
-  text-align: right;
-  padding: 0px 20px 15px;
-  background-position: left bottom;
-  font-size: 14px;
-  color: #999;
-  a {
-    color: #79A529;
-  }
+.floatmid {
+    .job {
+        margin-bottom: 5px;
+        padding: 5px;
+
+        &:hover {
+            background: #F7FEDA;
+            box-shadow: 0 0 10px #ccc;
+
+        }
+
+        a {
+            font-weight: bold;
+            color: #0066cc;
+        }
+        .comp-name {
+            font-weight: bold;
+        }
+        .job-loc, .comp-name {
+            color: #888;
+        }
+    }
 }
