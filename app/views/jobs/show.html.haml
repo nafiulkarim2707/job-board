@@ -61,6 +61,7 @@
       %meta{property: "og:title", content: "#{@job.title} at #{@job.company.name}  - somewhere in...jobs"}
       %meta{property: "og:type", content: "website"}
       %meta{property: "og:url", content: job_url(@job)}
+      %meta{property: "og:description", content:  strip_tags(@job.description)}
       %meta{property: "og:image", content: image_path('logo.gif')}
 
 
