@@ -4,15 +4,11 @@
       how to apply?
 
   = job.instructions.html_safe
-  %br/
-  .apply-linkedin
-    %script{src: "//platform.linkedin.com/in.js", type: "text/javascript"}
-      api_key: 3hd974zwiy98
-    - if job.company.linkedin_key.present?
+  - if job.company.linkedin_key.present?
+    %br/
+    .apply-linkedin
+      %script{src: "//platform.linkedin.com/in.js", type: "text/javascript"}
+        api_key: 3hd974zwiy98
       %script{:type => "IN/Apply", :'data-companyId' => job.company.linkedin_key,
           :'data-jobTitle' => job.title, :'data-email' => job.company.email,
           :'data-jobId' => job.id}
-    - else
-      %script{:type => "IN/Apply", :'data-companyName' => job.company.name,
-            :'data-jobTitle' => job.title, :'data-email' => job.company.email,
-            :'data-jobId' => job.id}

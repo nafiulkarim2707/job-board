@@ -1,0 +1,11 @@
+.page-header.hero-unit
+  %h1
+    oops!!!
+  %br/
+  %br
+  .row-fluid
+    .alert.alert-error
+      - if defined?(message)
+        = message
+      - else
+        sorry, the content you're looking is not here anymore!

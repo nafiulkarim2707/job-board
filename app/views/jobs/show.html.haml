@@ -1,61 +1,63 @@
 %section
-  .page-header
-    %h1
-      = @job.title
-      %small= @job.location
+  - if @job.present?
+    .page-header
+      %h1
+        = @job.title
+        %small= @job.location
 
-  .row
-    .span7
-      .job-info
-        - if @job.vacancies.present?
+    .row
+      .span7
+        .job-info
+          - if @job.vacancies.present?
+            .block
+              %strong
+                = t(:vacancies)
+              = @job.vacancies
           .block
             %strong
-              = t(:vacancies)
-            = @job.vacancies
-        .block
-          %strong
-            = t(:salary)
-          = @job.salary
-        .block
-          %strong
-            = t(:contract_type)
-          = @job.contract_type.to_s.humanize.downcase
+              = t(:salary)
+            = @job.salary
+          .block
+            %strong
+              = t(:contract_type)
+            = @job.contract_type.to_s.humanize.downcase
 
-        .block
-          %strong
-            = t(:expires_in)
-          %acronym{title: l(@job.expires_at), rel: 'tooltip'}
-            = distance_of_time_in_words_to_now @job.expires_at
+          .block
+            %strong
+              = t(:expires_in)
+            %acronym{title: l(@job.expires_at), rel: 'tooltip'}
+              = distance_of_time_in_words_to_now @job.expires_at
 
-      %p= @job.description.html_safe
+        %p= @job.description.html_safe
 
-      #job-details.accordion
-        - [:requirements, :additional_qualities, :notes].each_with_index do |field, i|
-          - if strip_tags(@job.send(field).to_s).present?
-            %h4= t(field.to_s)
-            %p= @job.send(field).html_safe
+        #job-details.accordion
+          - [:requirements, :additional_qualities, :notes].each_with_index do |field, i|
+            - if strip_tags(@job.send(field).to_s).present?
+              %h4= t(field.to_s)
+              %p= @job.send(field).html_safe
 
-    .span5
-      = render 'apply', :job => @job
-      .well.contact-info
-        = render @job.company
-      - if @job.tags.present?
-        - @job.tags.split(',').each do |tag|
-          .label{style: 'margin-right: 5px;margin-bottom: 5px; float:left;'}
-            = tag
-      .clearfix
-      %br/
-      .row-fluid
-        = render 'common/social', :job => @job
-      .clearfix
+      .span5
+        = render 'apply', :job => @job
+        .well.contact-info
+          = render @job.company
+        - if @job.tags.present?
+          - @job.tags.split(',').each do |tag|
+            .label{style: 'margin-right: 5px;margin-bottom: 5px; float:left;'}
+              = tag
+        .clearfix
+        %br/
+        .row-fluid
+          = render 'common/social', :job => @job
+        .clearfix
 
-    = content_for(:title) do
-      = "#{@job.title} at #{@job.company.name}"
-    = content_for(:og_tags) do
-      %meta{property: "og:title", content: "#{@job.title} at #{@job.company.name}  - somewhere in...jobs"}
-      %meta{property: "og:type", content: "website"}
-      %meta{property: "og:url", content: job_url(@job)}
-      %meta{property: "og:description", content:  strip_tags(@job.description)}
-      %meta{property: "og:image", content: image_path('logo.gif')}
-
+      = content_for(:title) do
+        = "#{@job.title} at #{@job.company.name}"
+      = content_for(:og_tags) do
+        %meta{property: "og:title", content: "#{@job.title} at #{@job.company.name}  - somewhere in...jobs"}
+        %meta{property: "og:type", content: "website"}
+        %meta{property: "og:url", content: job_url(@job)}
+        %meta{property: "og:description", content:  strip_tags(@job.description)}
+        %meta{property: "og:image", content: image_path('logo.gif')}
+  - else
+    = render 'common/p404', :message => 'sorry! you\'re late! the job posting is not available anymore!'
 
