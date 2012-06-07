@@ -1,14 +1,14 @@
-class Console::JobsController < Console::ConsoleController
+class Employer::JobsController < Employer::EmployerController
   include UrlHelper
 
   # GET /jobs
   # GET /jobs.json
   def index
-    @jobs = Job.all.sort(_id: -1)
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @jobs }
+    @company = current_user.company
+    if @company.present?
+      @jobs = current_user.company.jobs.all.sort(_id: -1)
     end
+
   end
 
   # GET /jobs/new
@@ -29,15 +29,15 @@ class Console::JobsController < Console::ConsoleController
 
   def duplicate
     @job = Job.find(params[:job_id])
-    redirect_to :console_jobs, :alert => 'No job found!' if @job.blank?
+    redirect_to :employer_jobs, :alert => 'no job found!' if @job.blank?
     @new_job = @job.dup
     @new_job.display = false
     @new_job.created_at = Time.now
     @new_job.updated_at = Time.now
     if @new_job.save
-      redirect_to edit_console_job_path(@new_job), :notice => 'Job is duplicated! You are editing the duplicated job!'
+      redirect_to edit_employer_job_path(@new_job), :notice => 'job is duplicated! you are editing the duplicated job!'
     else
-      redirect_to console_jobs_path, :alert => 'Sorry, the job could not be duplicated!'
+      redirect_to employer_jobs_path, :alert => 'sorry, the job could not be duplicated!'
     end
 
   end
@@ -45,12 +45,11 @@ class Console::JobsController < Console::ConsoleController
   # POST /jobs
   # POST /jobs.json
   def create
-    @company = Company.find(params[:job][:company_id])
-
+    @company = current_user.company
     @job = @company.jobs.new(params[:job].except(:company_id))
     respond_to do |format|
       if @job.save
-        format.html { redirect_to job_url(@job), notice: 'Job was successfully created.' }
+        format.html { redirect_to job_url(@job), notice: 'job was successfully created.' }
         format.json { render json: job_url(@job), status: :created, location: @job }
       else
         format.html { render action: "new" }
@@ -65,7 +64,7 @@ class Console::JobsController < Console::ConsoleController
     @job = Job.find(params[:id])
     respond_to do |format|
       if @job.update_attributes(params[:job])
-        format.html { redirect_to job_url(@job), notice: 'Job was successfully updated.' }
+        format.html { redirect_to job_url(@job), notice: 'job was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -80,9 +79,6 @@ class Console::JobsController < Console::ConsoleController
     @job = Job.find(params[:id])
     @job.destroy
 
-    respond_to do |format|
-      format.html { redirect_to console_jobs_url }
-      format.json { head :no_content }
-    end
+    redirect_to employer_jobs_url, :notice => 'job deleted successfully!'
   end
 end

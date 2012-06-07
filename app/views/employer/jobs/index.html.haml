@@ -6,7 +6,6 @@
     /= pagination_links(@jobs)
     %table.table.table-striped
       %tr
-        %th company
         %th title
         %th salary
         %th type
@@ -17,8 +16,6 @@
 
       - @jobs.each do |job|
         %tr
-          %td
-            = link_to job.company.name, console_company_path(job.company)
           %td
             = link_to job.title, job_url(job), :target => :blank
             %small
@@ -35,9 +32,9 @@
           %td
             = job.display ? 'visible' : 'hidden'
           %td
-            = link_to ' edit', edit_console_job_path(job), :class => 'btn btn-mini icon-edit'
-            = link_to ' copy', console_job_duplicate_path(job.id), :class => 'btn btn-inverse btn-mini icon-plus-sign'
-            = link_to ' delete', console_job_path(job), :confirm => 'are you sure to delete this jobs?', :method => :delete, :class => 'btn btn-danger btn-mini icon-minus-sign'
+            = link_to ' edit', edit_employer_job_path(job), :class => 'btn btn-mini icon-edit'
+            = link_to ' copy', employer_job_duplicate_path(job.id), :class => 'btn btn-inverse btn-mini icon-plus-sign'
+            = link_to ' delete', employer_job_path(job), :confirm => 'are you sure to delete this jobs?', :method => :delete, :class => 'btn btn-danger btn-mini icon-minus-sign'
 
     %br
     /= pagination_links(@jobs)
@@ -45,4 +42,4 @@
     .alert.alert-warning
       no jobs added so far!
   %br
-  = link_to ' new job'.html_safe, new_console_job_path, :class => 'btn btn-primary icon-plus-sign'
+  = link_to ' new job'.html_safe, new_employer_job_path, :class => 'btn btn-primary icon-plus-sign'

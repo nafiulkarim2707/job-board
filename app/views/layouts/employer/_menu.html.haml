@@ -1,0 +1,27 @@
+#top-menu.navbar.navbar-fixed-top
+  .navbar-inner
+    .container
+      %a.btn.btn-navbar(data-target=".nav-collapse" data-toggle="collapse")
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+
+      %a.brand(href=employer_root_path)
+        %img{src: '/assets/logo.png', height: '30px'}
+        somewhere in... jobs
+
+      .nav-collapse
+        %ul.nav
+
+          %li#employer-jobs= link_to "jobs", :employer_jobs
+          %li#employer-companies= link_to "company info", :employer_manage_company
+
+        %ul.nav.pull-right
+          %li
+            = link_to 'main site', root_path, :target => :blank
+          - if current_user.company.present?
+            %li
+              = link_to 'company jobs', company_jobs_path(current_user.company), :target => :blank
+          %li
+            = link_to 'sign out', destroy_user_session_path
+

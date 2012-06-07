@@ -7,4 +7,8 @@ class Console::ConsoleController < ApplicationController
     CacheUtil.invalidate_caches
     redirect_to :back
   end
+
+  def super_admin?
+    true
+  end
 end

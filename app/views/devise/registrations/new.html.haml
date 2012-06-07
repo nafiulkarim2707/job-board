@@ -1,0 +1,37 @@
+%section
+  .row-fluid
+    .page-header
+      %h1
+        sign up
+
+  = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+    = devise_error_messages!
+
+    .control-group
+      = f.label :name, class: 'control-label'
+      .controls
+        = f.text_field :name, class: 'input-xxlarge'
+    .control-group
+      = f.label :email, class: 'control-label'
+      .controls
+        = f.email_field :email, class: 'input-xxlarge'
+        %span.help-block
+          activation email will be sent to this email address
+    .control-group
+      = f.label :password, class: 'control-label'
+      .controls
+        = f.password_field :password, class: 'input-xxlarge'
+
+    .control-group
+      = f.label :password_confirmation, class: 'control-label'
+      .controls
+        = f.password_field :password_confirmation, class: 'input-xxlarge'
+    .control-group
+      = f.label :account_type, class: 'control-label'
+      .controls
+        = f.select :account_type, [['employer', 'employer'], ['job seeker', 'jobseeker']], class: 'input-xxlarge'
+
+    .form-actions
+      =  f.submit "sign up", class: 'btn btn-primary btn-large'
+
+  = render "links"

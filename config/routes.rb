@@ -1,16 +1,20 @@
 JobBoard::Application.routes.draw do
   get "static/(:page)", :to => 'static#index', :as => 'static_page'
 
-  get "console/index", :to => 'console/dashboard#index'
-  get "console/clearcache", :to => 'console/console#clear_all_cache'
-
   namespace :console do
     root :to => 'dashboard#index'
     resources :dashboard
     resources :companies
-    match '/jobs/clone/:id', :to => 'jobs#duplicate', :as => 'duplicate_job'
-    resources :jobs
+
+    resources :jobs do
+      get 'clone', :to => 'jobs#duplicate', :as => 'duplicate'
+    end
+
     resources :pages
+
+    get "/index", :to => 'dashboard#index'
+    get "/clearcache", :to => 'console#clear_all_cache'
+
   end
 
   devise_for :users
@@ -27,5 +31,18 @@ JobBoard::Application.routes.draw do
 
   match '/jobs/:slug/:id', :to => 'jobs#show', :as => 'job_details'
   resources :jobs, :only => [:index]
+
+  namespace :employer do
+    root :to => 'dashboard#index'
+    get 'company', :to => 'companies#manage', :as => 'manage_company'
+    post 'company', :to => 'companies#create', :as => 'manage_company'
+    put 'company', :to => 'companies#update', :as => 'update_company'
+
+    resources :jobs do
+      get 'clone', :to => 'jobs#duplicate', :as => 'duplicate'
+    end
+
+
+  end
 
 end

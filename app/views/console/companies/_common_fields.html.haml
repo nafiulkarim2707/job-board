@@ -1,0 +1,42 @@
+- if @company.errors.any?
+  .offset1
+    #error_explanation.well
+      %h2= "#{pluralize(@company.errors.count, "error")} prohibited this company from being saved:"
+      %ul
+        - @company.errors.full_messages.each do |msg|
+          %li= msg
+
+.control-group
+  = f.label :name, 'name', :class => 'control-label'
+  .controls
+    = f.text_field :name, class: 'input-xxlarge'
+
+.control-group
+  = f.label :email, 'email', :class => 'control-label'
+  .controls
+    .input-prepend
+      %span.add-on.muted @
+      = f.email_field :email
+
+.control-group
+  = f.label :website, 'website', class: 'control-label'
+  .controls
+    = f.url_field :website, class: 'input-xxlarge'
+
+.control-group
+  = f.label :address, 'address', class: 'control-label'
+  .controls
+    = f.text_area :address, class: 'input-xxlarge', rows: 4
+
+.control-group
+  = f.label :overview, 'overview', class: 'control-label'
+
+  .controls
+    = f.text_area :overview, class: 'rich-editor input-xxlarge'
+
+.control-group
+  = f.label :linkedin_key, 'company id in linkedin (if any)', class: 'control-label'
+
+  .controls
+    = f.text_field :linkedin_key, class: 'input-xxlarge'
+
