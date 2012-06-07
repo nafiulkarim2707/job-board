@@ -1,0 +1,24 @@
+%section
+  .row-fluid
+    .page-header
+      %h1
+        sign in
+
+    = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+      .control-group
+        = f.label :email, class: 'control-label'
+        .controls.input-prepend
+          = f.email_field :email
+      .control-group
+        = f.label :password
+        .controls.input-prepend
+          = f.password_field :password
+
+      - if devise_mapping.rememberable?
+        .control-group.inline
+          = f.check_box :remember_me, :class => 'checkbox inline'
+          = f.label :remember_me, class: 'control-label checkbox inline'
+        .form-actions
+          = f.submit "sign in", :class => 'btn btn-large btn-primary'
+
+    = render "links"

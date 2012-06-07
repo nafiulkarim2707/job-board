@@ -41,6 +41,11 @@ class User
   # field :authentication_token, :type => String
   field :name, type: String
 
-  embeds_one :company
+  field :account_type, type: String
 
+
+  has_one :company, :dependent => :delete
+
+  validates :name, :presence => true
+  validates :account_type, :presence => true
 end

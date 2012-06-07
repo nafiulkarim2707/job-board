@@ -1,4 +1,4 @@
-= form_for [:console, @company], :html => {class: 'form-horizontal'} do |f|
+= form_for [@company], :url => :employer_update_company, :html => {class: 'form-horizontal'}, :method => (@company.new_record? ? :post : :put) do |f|
 
   = render 'console/companies/common_fields', :f => f
 

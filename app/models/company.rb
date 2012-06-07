@@ -10,6 +10,8 @@ class Company
   field :linkedin_key, type: String
 
   has_many :jobs, :dependent => :delete
+  belongs_to :user
+
 
   validates :name, :presence => true, :uniqueness => true
   validates :website, :uniqueness => true
