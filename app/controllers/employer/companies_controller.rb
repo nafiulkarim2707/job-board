@@ -1,22 +1,12 @@
 class Employer::CompaniesController < Employer::EmployerController
   def manage
-    @company = current_user.company || Company.new({:user_id => current_user.id})
-  end
-
-  def create
-    @company = Company.new(params[:company])
-    @company.user_id = current_user.id
-    if @company.save
-      redirect_to employer_manage_company_path, notice: 'company was created successfully!.'
-    else
-      render action: "manage"
-    end
+    @company = Company.find_or_initialize_by(:user_id => current_user.id)
   end
 
   def update
-    @company = current_user.company
+    @company = Company.find_or_initialize_by(:user_id => current_user.id)
     if @company.update_attributes(params[:company].except(:user_id))
-      redirect_to employer_manage_company_path, notice: 'company was successfully updated.'
+      redirect_to employer_manage_company_path, notice: 'company info was successfully updated'
     else
       render action: "manage"
     end

@@ -19,4 +19,10 @@ class ApplicationController < ActionController::Base
   def super_admin?
     false
   end
+
+  rescue_from Mongoid::Errors::DocumentNotFound, :with => :render_404
+
+  def render_404
+    render 'common/_p404'
+  end
 end

@@ -35,7 +35,6 @@ JobBoard::Application.routes.draw do
   namespace :employer do
     root :to => 'dashboard#index'
     get 'company', :to => 'companies#manage', :as => 'manage_company'
-    post 'company', :to => 'companies#create', :as => 'manage_company'
     put 'company', :to => 'companies#update', :as => 'update_company'
 
     resources :jobs do
@@ -45,4 +44,9 @@ JobBoard::Application.routes.draw do
 
   end
 
+
+
+
+  #this should always be last line
+  match '*a', :to => 'application#render_404'
 end
