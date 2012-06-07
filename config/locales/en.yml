@@ -10,13 +10,21 @@ en:
   salary: 'salary'
   contract_type: 'contract type'
   expires_in: 'expires in'
-  vacancies: 'vacancies'
+  vacancies: 'no. of vacancies'
+  tags: 'tags'
+  location: 'location'
+  description: 'description'
+
+  expires_at: 'expires at'
+  visibility: 'visibility'
 
   company: 'company'
   title: 'job title'
 
   company_information: 'company information'
   recent_jobs: 'recent jobs'
+
+  company: 'company'
 
   page:
     title: 'page title'

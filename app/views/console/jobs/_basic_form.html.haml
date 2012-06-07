@@ -1,35 +1,35 @@
 .control-group
-  = f.label :company_id, :class => 'control-label'
+  = f.label :company_id, t(:company), :class => 'control-label'
   .controls
     = f.select :company_id, Company.all.map{|company| [company.name, company.id]}, {}, {class: 'input-xxlarge'}
 
 .control-group
-  = f.label :contract_type, class: 'control-label'
+  = f.label :contract_type, t(:contract_type), class: 'control-label'
   .controls
-    = f.select :contract_type, Job::TYPES.map{|_t| [_t.to_s.humanize, _t.to_s] }, {}, { :class => 'input-xxlarge' }
+    = f.select :contract_type, Job::TYPES.map{|_t| [_t.to_s.humanize.downcase, _t.to_s] }, {}, { :class => 'input-xxlarge' }
 
 .control-group
-  = f.label :title, class: 'control-label'
+  = f.label :title, t(:title), class: 'control-label'
   .controls
     = f.text_field :title, class: 'input-xxlarge'
 
 .control-group
-  = f.label :location, class: 'control-label'
+  = f.label :location, t(:location), class: 'control-label'
   .controls
     = f.text_field :location, class: 'input-xxlarge'
 
 .control-group
-  = f.label :salary, class: 'control-label'
+  = f.label :salary, t(:salary), class: 'control-label'
   .controls
-    = f.text_field :salary, class: 'input-small'
+    = f.text_field :salary, class: 'input-large'
 
 .control-group
-  = f.label :vacancies, class: 'control-label'
+  = f.label :vacancies, t(:vacancies), class: 'control-label'
   .controls
     = f.number_field :vacancies, class: 'input-small', min: 1
 
 
 .form-actions.navbar-fixed-bottom
-  %a.btn.btn-primary{href: '#tab-details', 'data-toggle' => 'tab', type: 'button'} Next Details &gt;
+  %a.btn.btn-primary{href: '#tab-details', 'data-toggle' => 'tab', type: 'button'} next details &gt;
   - if !@job.new_record?
-    = f.submit 'Save Job', class: 'btn btn-primary btn-large'
+    = f.submit 'save job', class: 'btn btn-primary btn-large'

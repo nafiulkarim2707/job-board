@@ -1,24 +1,24 @@
 .control-group
-  = f.label :tags, class: 'control-label'
+  = f.label :tags, t(:tags), class: 'control-label'
   .controls.tags
     = f.text_field :tags, class: 'input-xxlarge'
 .control-group
-  = f.label :description, class: 'control-label'
+  = f.label :description, t(:description), class: 'control-label'
   .controls
     = f.text_area :description, :class => 'rich-editor input-xxlarge'
 
 .control-group
-  = f.label :requirements, class: 'control-label'
+  = f.label :requirements, t(:requirements), class: 'control-label'
   .controls
     = f.text_area :requirements, :class => 'rich-editor input-xxlarge'
 
 .control-group
-  = f.label :additional_qualities, class: 'control-label'
+  = f.label :additional_qualities, t(:additional_qualities), class: 'control-label'
   .controls
     = f.text_area :additional_qualities, :class => 'input-xxlarge rich-editor'
 
 .form-actions.navbar-fixed-bottom
-  %a.btn.btn-warning{href: '#tab-basic-info', 'data-toggle' => 'tab', type: 'button'} &lt; Previous Basic Info
-  %a.btn.btn-primary{href: '#tab-instruction', 'data-toggle' => 'tab', type: 'button'} Next Instruction &gt;
+  %a.btn.btn-warning{href: '#tab-basic-info', 'data-toggle' => 'tab', type: 'button'} &lt; previous basic info
+  %a.btn.btn-primary{href: '#tab-instruction', 'data-toggle' => 'tab', type: 'button'} next instruction &gt;
   - if !@job.new_record?
-    = f.submit 'Save Job', class: 'btn btn-primary btn-large'
+    = f.submit 'save job', class: 'btn btn-primary btn-large'

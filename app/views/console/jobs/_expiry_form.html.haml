@@ -1,14 +1,14 @@
 .control-group.expires
-  = f.label :expires_at, class: 'control-label'
+  = f.label :expires_at, t(:expires_at), class: 'control-label'
   .controls
     = f.datetime_select :expires_at, start_year: Time.now.year, end_year: (Time.now + 2.years).year,
       minute_step: 15, hour_step: 3, :default => 7.days.from_now
 
 .control-group
-  = f.label :display, 'Visibility', class: 'control-label'
+  = f.label :display, t(:visibility), class: 'control-label'
   .controls
     = f.select :display, [['On', true], ['Off', false]]
 
 .form-actions.navbar-fixed-bottom
-  %a.btn.btn-warning{href: '#tab-instruction', 'data-toggle' => 'tab', type: 'button'} &lt; Previous Expiry
-  = f.submit 'Save Job', class: 'btn btn-primary btn-large'
+  %a.btn.btn-warning{href: '#tab-instruction', 'data-toggle' => 'tab', type: 'button'} &lt; previous expiry
+  = f.submit 'save job', class: 'btn btn-primary btn-large'

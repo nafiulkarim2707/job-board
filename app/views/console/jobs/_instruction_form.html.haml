@@ -1,15 +1,15 @@
 .control-group
-  = f.label :instructions, 'How to Apply', class: 'control-label'
+  = f.label :instructions, t(:instructions), class: 'control-label'
   .controls
     = f.text_area :instructions, :class => 'input-xxlarge rich-editor'
 
 .control-group
-  = f.label :notes, class: 'control-label'
+  = f.label :notes, t(:notes), class: 'control-label'
   .controls
     = f.text_area :notes, :class => 'input-xxlarge rich-editor'
 
 .form-actions.navbar-fixed-bottom
-  %a.btn.btn-warning{href: '#tab-details', 'data-toggle' => 'tab', type: 'button'} &lt; Previous Details
-  %a.btn.btn-primary{href: '#tab-expiry', 'data-toggle' => 'tab', type: 'button'} Next Expiry &gt;
+  %a.btn.btn-warning{href: '#tab-details', 'data-toggle' => 'tab', type: 'button'} &lt; previous details
+  %a.btn.btn-primary{href: '#tab-expiry', 'data-toggle' => 'tab', type: 'button'} next expiry &gt;
   - if !@job.new_record?
-    = f.submit 'Save Job', class: 'btn btn-primary btn-large'
+    = f.submit 'save job', class: 'btn btn-primary btn-large'
