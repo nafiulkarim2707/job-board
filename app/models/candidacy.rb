@@ -3,6 +3,7 @@ class Candidacy
   include Mongoid::Timestamps
   include Mongoid::MultiParameterAttributes
 
+  belongs_to :candidate, :class_name => 'User'
+  belongs_to :job
 
-  field :linkedin_link, type: String
 end

@@ -48,4 +48,5 @@ class User
 
   has_one :company, :dependent => :delete
   has_one :resume, :dependent => :delete
+  has_many :candidacies
 end
