@@ -3,6 +3,11 @@
     %h3
       how to apply?
 
+  - if user_signed_in?
+    - if @job.has_active_candidacy?(current_user)
+      you've already applied for this job
+    - else
+      = link_to 'apply', candidate_apply_job_path(job), :class => 'btn btn-primary btn-large', :method => :put
   = job.instructions.html_safe
   - if job.company.linkedin_key.present?
     %br/

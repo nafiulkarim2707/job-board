@@ -46,6 +46,10 @@ JobBoard::Application.routes.draw do
     root :to => 'dashboard#index'
     get 'resume', :to => 'resume#manage', :as => 'manage_resume'
     put 'resume', :to => 'resume#update', :as => 'update_resume'
+
+    scope '/jobs/:job_id' do
+      put 'apply', :to => 'candidacy#create', :as => 'apply_job'
+    end
   end
 
 

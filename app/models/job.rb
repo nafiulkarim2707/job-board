@@ -1,5 +1,5 @@
 class Job
-  TYPES = [ :full_time, :part_time, :telecommute, :other ]
+  TYPES = [:full_time, :part_time, :telecommute, :other]
 
   include Mongoid::Document
   include Mongoid::Timestamps
@@ -24,8 +24,16 @@ class Job
   validates :requirements, :presence => true
   validates :expires_at, :presence => true
 
-  belongs_to :company
-
-
   scope :active, where(display: true).where(:expires_at.gte => Time.now)
+
+  belongs_to :company
+  has_many :candidacies
+
+  def is_active?
+    self.expires_at > Time.now
+  end
+
+  def has_active_candidacy?(candidate_id)
+    !!Candidacy.where(:candidate_id => candidate_id, :job_id => self.id).first
+  end
 end

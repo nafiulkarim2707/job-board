@@ -19,4 +19,6 @@ class Resume
 
   accepts_nested_attributes_for :positions, :allow_destroy => true, :reject_if => proc {|p| p[:title].blank?}
   accepts_nested_attributes_for :educations, :allow_destroy => true, :reject_if => proc {|p| p[:school].blank?}
+
+  has_many :candidacies
 end
