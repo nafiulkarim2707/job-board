@@ -3,6 +3,7 @@ class Candidate::ResumeController < Candidate::CandidateController
     @resume = Resume.find_or_initialize_by(:candidate_id => current_user.id, :email => current_user.email)
     @resume.positions.build
     @resume.educations.build
+    @resume.skills.build
   end
 
   def update

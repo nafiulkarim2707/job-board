@@ -3,7 +3,7 @@
     %h1 edit resume
 
   .row-fluid
-    = form_for [:candidate, @resume], :url => :candidate_update_resume, :html => {class: 'form-horizontal'}, :method =>  :put do |f|
+    = form_for [:candidate, @resume], :url => :candidate_update_resume, :html => {class: 'form-horizontal', :id => 'resume_form'}, :method =>  :put do |f|
 
       - if @resume.errors.any?
         .offset1
@@ -13,45 +13,66 @@
               - @resume.errors.full_messages.each do |msg|
                 %li= msg.downcase
 
-      .control-group
-        = f.label :firstname, 'first name', :class => 'control-label'
-        .controls
-          = f.text_field :firstname, class: 'input-xxlarge'
+      %fieldset
+        %legend personal info
+        .control-group
+          = f.label :firstname, 'first name', :class => 'control-label'
+          .controls
+            = f.text_field :firstname, class: 'input-xxlarge'
 
-      .control-group
-        = f.label :lastname, 'last name', :class => 'control-label'
-        .controls
-          = f.text_field :lastname, class: 'input-xxlarge'
+        .control-group
+          = f.label :lastname, 'last name', :class => 'control-label'
+          .controls
+            = f.text_field :lastname, class: 'input-xxlarge'
+        .control-group
+          = f.label :mailing_address, t(:mailing_address), :class => 'control-label'
+          .controls
+            = f.text_area :mailing_address, :rows => 5, class: 'input-xxlarge'
 
-      .control-group
-        = f.label :email, 'email', :class => 'control-label'
-        .controls
-          .input-prepend
-            %span.add-on.muted @
-            = f.email_field :email
+        .control-group
+          = f.label :email, t(:email), :class => 'control-label'
+          .controls
+            .input-prepend
+              %span.add-on.muted @
+              = f.email_field :email
 
-      .control-group
-        = f.label :language, 'known language', :class => 'control-label'
-        .controls
-          = f.text_field :language, class: 'input-xxlarge'
-          %p.help-block use comma for multiple languages!
+        .control-group
+          = f.label :website, t(:website), :class => 'control-label'
+          .controls
+            = f.url_field :website, class: 'input-xxlarge'
+      %fieldset
+        %legend professional info
+        .control-group
+          = f.label :summary, t(:summary), :class => 'control-label'
+          .controls
+            = f.text_area :summary, :rows => 5, class: 'input-xxlarge'
 
-      .control-group
-        = f.label :skills, 'skills', :class => 'control-label'
-        .controls
-          = f.text_field :skills, class: 'input-xxlarge'
-          %p.help-block use comma for multiple languages!
+        .control-group
+          = f.label :language, 'known language', :class => 'control-label'
+          .controls
+            = f.text_field :language, class: 'input-xxlarge'
+            %p.help-block use comma for multiple languages!
 
-      %h3 past positions
-      = render_jquery_tabs(@resume.positions, :title) do |position|
-        = f.fields_for :positions, position do |pp|
-          = render 'candidate/resume/position_form', f: pp
+        %fieldset
+          %legend skills
+          %br/
+          .skills
+            = f.fields_for :skills  do |s|
+              = render 'candidate/resume/skill_fields', :f => s
+            .action
+              = link_to_add_fields 'add skill', f, :skills, :class => 'btn btn-primary btn-mini'
+        %fieldset
+          %legend educations
+          = render_jquery_tabs(@resume.educations, :degree) do |position|
+            = f.fields_for :educations, position do |ed|
+              = render 'candidate/resume/education_fields', f: ed
 
 
-      %h3 educations
-      = render_jquery_tabs(@resume.educations, :degree) do |position|
-        = f.fields_for :educations, position do |ed|
-          = render 'candidate/resume/education_form', f: ed
+        %fieldset
+          %legend professional experiences
+          = render_jquery_tabs(@resume.positions, :title) do |position|
+            = f.fields_for :positions, position do |pp|
+              = render 'candidate/resume/position_fields', f: pp
 
 
       .form-actions

@@ -6,5 +6,6 @@
 //= require tinymce-jquery
 //= require '../../../../vendor/assets/javascripts/jquery.tagsinput.min.js'
 //= require ../console/jobs
+//= require ../global
 //= require_tree .
 

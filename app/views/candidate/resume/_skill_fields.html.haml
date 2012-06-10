@@ -1,0 +1,8 @@
+.control-group.form-inline.fields
+  .controls
+    = f.label :type
+    = f.text_field :type, class: 'input-small'
+
+    = f.label :description
+    = f.text_field :description, class: 'input-xxlarge'
+    = link_to_remove_fields 'x', f, :class => 'btn btn-danger btn-mini'
