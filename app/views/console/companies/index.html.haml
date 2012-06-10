@@ -7,15 +7,15 @@
         %th name
         %th email
         %th website
-        %th address
+        %th created on
         %th
 
       - @companies.each do |company|
         %tr
-          %td{style: 'width: 10%'}= company.name
-          %td{style: 'width: 10%'}= company.email
-          %td{style: 'width: 10%'}= company.website
-          %td{style: 'width: 30%'}= company.address
+          %td= link_to company.name, company_path(company), :target => :_blank
+          %td= company.email
+          %td= company.website
+          %td= company.created_at
           %td
             .btn-group
               = link_to '<i class="icon-share-alt">&nbsp;</i>show'.html_safe, company_path(company), :class => 'btn btn-mini', target: '_blank'

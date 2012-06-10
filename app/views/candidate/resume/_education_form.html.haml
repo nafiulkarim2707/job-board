@@ -1,0 +1,26 @@
+.control-group
+  = f.label :school, :class => 'control-label'
+  .controls
+    = f.text_field :school, class: 'input-xxlarge'
+
+.control-group
+  = f.label :degree, :class => 'control-label'
+  .controls
+    = f.text_field :degree, class: 'input-xxlarge'
+
+.control-group
+  = f.label :field_of_study, :class => 'control-label'
+  .controls
+    = f.text_field :field_of_study, class: 'input-xxlarge'
+
+.control-group
+  = f.label :started_at, :class => 'control-label'
+  .controls
+    = f.text_field :started_at, class: 'date'
+
+.control-group
+  = f.label :ended_at, :class => 'control-label'
+  .controls
+    = f.text_field :ended_at, class: 'date'
+    %p
+      %help-block for current education, use tentative completion year

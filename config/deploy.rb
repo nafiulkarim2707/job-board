@@ -10,7 +10,7 @@ set :rvm_type, :user
 default_run_options[:pty] = true
 
 set :stages, %w(staging production)
-set :default_stage, "production"
+set :default_stage, "staging"
 
 set :application, "jobboard"
 set :deploy_to, lambda { "/home/jobboard/#{stage}" }
