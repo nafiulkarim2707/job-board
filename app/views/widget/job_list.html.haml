@@ -2,14 +2,13 @@
 
 - if @jobs.present?
   .floatmid
-    .jobs
-      - @jobs.each do |job|
-        .job
-          %a{:href => job_url(job), :target => '_blank'}
-            %strong
-              = job.title
-          .comp-name= job.company.name
-          .job-loc= job.location
-
+    - @jobs.each do |job|
+      %a.jb-item{:href => job_url(job), :target => '_blank'}
+        %span.jb-deadline
+        = job.title
+        %span.jb-comp
+          = job.company.name
+        %span.jb-loc
+          = job.location
 - else
   No available position!
