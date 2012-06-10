@@ -43,9 +43,9 @@ class User
 
   field :account_type, type: String
 
-
-  has_one :company, :dependent => :delete
-
   validates :name, :presence => true
   validates :account_type, :presence => true
+
+  has_one :company, :dependent => :delete
+  has_one :resume, :dependent => :delete
 end

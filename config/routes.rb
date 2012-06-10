@@ -22,7 +22,7 @@ JobBoard::Application.routes.draw do
   root :to => "jobs#index"
 
   scope '/widget' do
-     match "job_list" => "widget#job_list", :as => "job_list_wiget"
+    match "job_list" => "widget#job_list", :as => "job_list_wiget"
   end
 
   resources :companies do
@@ -40,11 +40,13 @@ JobBoard::Application.routes.draw do
     resources :jobs do
       get 'clone', :to => 'jobs#duplicate', :as => 'duplicate'
     end
-
-
   end
 
-
+  namespace :candidate do
+    root :to => 'dashboard#index'
+    get 'resume', :to => 'resume#manage', :as => 'manage_resume'
+    put 'resume', :to => 'resume#update', :as => 'update_resume'
+  end
 
 
   #this should always be last line

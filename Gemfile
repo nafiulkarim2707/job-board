@@ -13,6 +13,7 @@ gem 'coffee-rails', '~> 3.2.1'
 gem 'haml-rails'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
+gem "mongoid-paperclip", :require => "mongoid_paperclip"
 
 # Gems used only for assets and not required
 # in production environments by default.

@@ -1,0 +1,9 @@
+/*
+ *= require_self
+ *= require ../../../../vendor/assets/stylesheets/jquery.tagsinput.css
+ *= require ../bootstrap_and_overrides.css.less
+ *= require jquery.ui.core
+ *= require jquery.ui.theme
+
+ *= require_tree .
+*/

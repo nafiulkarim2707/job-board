@@ -14,9 +14,10 @@
 //= require jquery_ujs
 //= require jquery.ui.core
 //= require jquery.ui.datepicker
+//= require jquery.ui.dialog
 //= require twitter/bootstrap
+//= require public/jobs
 
-//= require_tree .
 
 $(document).ready(function(){
   $('.datepicker').datepicker();

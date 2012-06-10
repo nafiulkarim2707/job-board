@@ -1,0 +1,60 @@
+%section
+  .page-header
+    %h1 edit resume
+
+  .row-fluid
+    = form_for [:candidate, @resume], :url => :candidate_update_resume, :html => {class: 'form-horizontal'}, :method =>  :put do |f|
+
+      - if @resume.errors.any?
+        .offset1
+          #error_explanation.well
+            %h2= "#{pluralize(@resume.errors.count, "error")} prohibited this resume from being saved:"
+            %ul
+              - @resume.errors.full_messages.each do |msg|
+                %li= msg.downcase
+
+      .control-group
+        = f.label :firstname, 'first name', :class => 'control-label'
+        .controls
+          = f.text_field :firstname, class: 'input-xxlarge'
+
+      .control-group
+        = f.label :lastname, 'last name', :class => 'control-label'
+        .controls
+          = f.text_field :lastname, class: 'input-xxlarge'
+
+      .control-group
+        = f.label :email, 'email', :class => 'control-label'
+        .controls
+          .input-prepend
+            %span.add-on.muted @
+            = f.email_field :email
+
+      .control-group
+        = f.label :language, 'known language', :class => 'control-label'
+        .controls
+          = f.text_field :language, class: 'input-xxlarge'
+          %p.help-block use comma for multiple languages!
+
+      .control-group
+        = f.label :skills, 'skills', :class => 'control-label'
+        .controls
+          = f.text_field :skills, class: 'input-xxlarge'
+          %p.help-block use comma for multiple languages!
+
+      %h3 past positions
+      = render_jquery_tabs(@resume.positions, :title) do |position|
+        = f.fields_for :positions, position do |pp|
+          = render 'candidate/resume/position_form', f: pp
+
+
+      %h3 educations
+      = render_jquery_tabs(@resume.educations, :degree) do |position|
+        = f.fields_for :educations, position do |ed|
+          = render 'candidate/resume/education_form', f: ed
+
+
+      .form-actions
+        %a.btn.btn-large{type: 'button', href: console_companies_path}
+          Cancel
+        = f.submit ' save', :class => 'btn btn-primary btn-large icon-ok'

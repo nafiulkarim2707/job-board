@@ -1,0 +1,33 @@
+!!! 5
+%html(lang="en")
+  %head
+    %meta(charset="utf-8")
+    %meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    %title= content_for?(:title) ? yield(:title) + ' - candidate console - somewhere in... jobs'  : "somewhere in... jobs"
+    = csrf_meta_tags
+    / Le HTML5 shim, for IE6-8 support of HTML elements
+    /[if lt IE 9]
+    = javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js"
+    = stylesheet_link_tag "candidate/candidate", :media => "all"
+    %link(href="images/favicon.ico" rel="shortcut icon")
+    %link(href="images/apple-touch-icon.png" rel="apple-touch-icon")
+    %link(href="images/apple-touch-icon-72x72.png" rel="apple-touch-icon" sizes="72x72")
+    %link(href="images/apple-touch-icon-114x114.png" rel="apple-touch-icon" sizes="114x114")
+
+  %body
+    .container
+      = render 'layouts/candidate/header'
+      = render 'layouts/notice'
+      = yield
+
+    %footer
+      %hr
+      %p.muted{align: 'center'}
+        %b &copy;
+        = image_tag 'http://www.somewherein.net/wp-content/themes/Gaia/data/1322638412_swilogo-184x29.gif',
+                    title: 'somewhere in net ltd'
+
+        = Time.now.year
+
+    = javascript_include_tag "candidate/candidate"
+    = yield :bottom
