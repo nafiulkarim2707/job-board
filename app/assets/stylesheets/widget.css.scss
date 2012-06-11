@@ -1,3 +1,7 @@
+* {
+  font: 13px/normal Verdana, sans-serif, SolaimanLipi;
+}
+
 .floatbox.alt1 {
   background-color: #fff;
   background-image: none;
@@ -5,7 +9,8 @@
   border-radius: 16px 16px 16px 0px;
   box-shadow: 3px 3px 2px #999;
   border-top: 1px solid #E4E4E4;
-  width: 220px; }
+  width: 220px;
+}
 
 .alt1 {
   #floathead, .floathead {
@@ -13,7 +18,8 @@
     background-repeat: no-repeat;
     background-color: #84C111;
     border-radius: 16px 16px 0px 0px;
-    padding-left: 20px; }
+    padding-left: 20px;
+  }
   .floatfoot {
     text-align: right;
     padding: 0px 20px 15px;
@@ -23,7 +29,10 @@
     background-image: none;
     border-radius: 0px 0px 16px 0px;
     a {
-      color: #79A529; } } }
+      color: #79A529;
+    }
+  }
+}
 
 .floatmid a {
   &.jb-item {
@@ -37,14 +46,17 @@
     border-top: 1px solid #FFF;
     border-right: 0px solid #FFF;
     border-bottom: 1px solid #FFF;
-    font: 14px Arial, Helvetica, sans-serif; }
+    font: 14px;
+    text-decoration: none;
+  }
   .jb-comp {
-    font: bold 13px Arial, Helvetica, sans-serif;
+    font: bold 13px;
     color: #999999;
     display: block;
     clear: both;
     text-align: left;
-    margin-top: 5px; }
+    margin-top: 5px;
+  }
   .jb-deadline {
     display: block;
     padding: 3px;
@@ -53,11 +65,15 @@
     border-radius: 6px;
     font-size: 14px;
     text-align: center;
-    min-width: 40px; }
+    min-width: 40px;
+  }
   &.jb-item:hover {
     text-decoration: none;
     background-color: #F7FEDA;
-    border-color: #DBEB9C; }
+    border-color: #DBEB9C;
+  }
   &:hover .jb-deadline {
     color: #FFF;
-    background-color: #94C632; } }
+    background-color: #94C632;
+  }
+}
