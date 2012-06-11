@@ -4,11 +4,10 @@
   .floatmid
     - @jobs.each do |job|
       %a.jb-item{:href => job_url(job), :target => '_blank'}
-        %span.jb-deadline
         = job.title
         %span.jb-comp
           = job.company.name
         %span.jb-loc
           = job.location
 - else
-  No available position!
+  no available position!
