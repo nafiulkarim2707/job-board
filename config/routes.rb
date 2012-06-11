@@ -1,4 +1,5 @@
 JobBoard::Application.routes.draw do
+
   get "static/(:page)", :to => 'static#index', :as => 'static_page'
 
   namespace :console do
@@ -9,12 +10,9 @@ JobBoard::Application.routes.draw do
     resources :jobs do
       get 'clone', :to => 'jobs#duplicate', :as => 'duplicate'
     end
-
     resources :pages
-
     get "/index", :to => 'dashboard#index'
     get "/clearcache", :to => 'console#clear_all_cache'
-
   end
 
   devise_for :users
@@ -31,6 +29,7 @@ JobBoard::Application.routes.draw do
 
   match '/jobs/:slug/:id', :to => 'jobs#show', :as => 'job_details'
   resources :jobs, :only => [:index]
+  resources :candidates, :only => [:show]
 
   namespace :employer do
     root :to => 'dashboard#index'
@@ -39,7 +38,9 @@ JobBoard::Application.routes.draw do
 
     resources :jobs do
       get 'clone', :to => 'jobs#duplicate', :as => 'duplicate'
+      resources :candidacies
     end
+
   end
 
   namespace :candidate do

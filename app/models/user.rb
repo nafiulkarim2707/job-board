@@ -49,4 +49,9 @@ class User
   has_one :company, :dependent => :delete
   has_one :resume, :dependent => :delete
   has_many :candidacies
+
+
+  def is_candidate?
+    self.account_type == 'jobseeker'
+  end
 end

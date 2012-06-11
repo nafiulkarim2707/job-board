@@ -3,7 +3,7 @@
     %h3
       how to apply?
 
-  - if user_signed_in?
+  - if user_signed_in? && current_user.is_candidate?
     - if @job.has_active_candidacy?(current_user)
       you've already applied for this job
     - else

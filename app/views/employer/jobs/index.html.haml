@@ -12,6 +12,7 @@
         %th posted
         %th{width: '100px'} expires in
         %th visibility
+        %th job applications
         %th actions
 
       - @jobs.each do |job|
@@ -31,6 +32,8 @@
               = job.expires_at
           %td
             = job.display ? 'visible' : 'hidden'
+          %td
+            = link_to job.candidacies.length, employer_job_candidacies_path(job)
           %td
             = link_to ' edit', edit_employer_job_path(job), :class => 'btn btn-mini icon-edit'
             = link_to ' copy', employer_job_duplicate_path(job.id), :class => 'btn btn-inverse btn-mini icon-plus-sign'

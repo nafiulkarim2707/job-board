@@ -7,6 +7,6 @@ class Candidate::CandidateController < ApplicationController
   end
 
   def candidate_only
-    redirect_to root_path unless is_candidate?
+    redirect_to root_path, :alert => 'you do not have permission to access job seeker panel!' unless is_candidate?
   end
 end
