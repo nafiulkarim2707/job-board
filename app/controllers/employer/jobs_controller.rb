@@ -1,5 +1,4 @@
 class Employer::JobsController < Employer::EmployerController
-  include UrlHelper
 
   # GET /jobs
   # GET /jobs.json
