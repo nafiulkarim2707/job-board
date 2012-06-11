@@ -1,0 +1,4 @@
+- if @candidacy.present?
+  $('tr#row_#{@candidacy.id}').replaceWith('#{escape_javascript(render 'candidacy', :c => @candidacy)}')
+- else
+  alert(t(:no_candidacy_found)

@@ -5,5 +5,7 @@
 //= require twitter/bootstrap
 //= require tinymce-jquery
 //= require '../../../../vendor/assets/javascripts/jquery.tagsinput.min.js'
+//= require '../../../../vendor/assets/javascripts/jquery.colorbox.js'
 //= require ../console/jobs
+//= require_tree .
 
