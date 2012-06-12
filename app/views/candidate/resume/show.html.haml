@@ -1,6 +1,102 @@
 %section
   .page-header
     %h1 preview resume
+    //=p @resume.inspect
+    //=p @resume.positions.inspect
+    //=p @resume.educations.inspect
+    //=p @resume.skills.inspect
+    //= sprintf('%s %s', @resume.firstname, @resume.lastname)
+  //.row-fluid
+  //.well
+  //%h1 Basic info
+  //= "email: "
+  //= @resume.email
+  .row-fluid
+    .span3
+      %a.thumbnail{:href => "#"}
+        %img{:alt => "", :src => "http://placehold.it/260x180"}
+    .span6
+      %h3
+        = sprintf('%s %s', @resume.firstname, @resume.lastname)
+      - @resume.positions.each do |position|
+        - if !position.is_current?
+          = "#{position.title.to_s} at #{position.company_name }"
+          %br
+          = @resume.email
+          %br
+          = @resume.contact_number.to_s
+    -if user_signed_in?
+      - if current_user == @resume.candidate
+        .span3
+          = link_to 'edit resume', :candidate_manage_resume
+      - if current_user.is_employer?
+        .span3
+          = link_to 'invite candidate', '#'
+
+
+  %br
+  .row-fluid
+    %h3 Job Experience
+    %table.table-striped.table.table-bordered
+      %thead
+        %tr
+          %th Company
+          %th Position
+          %th Duration
+      %tbody
+      - @resume.positions.each do|position|
+        %tr
+          %td
+            = position.company_name
+          %td
+            = position.title
+          %td
+            = "#{position.started_at.strftime('%b, %Y')} - #{position.ended_at.strftime('%b, %Y')}"
+            %br
+            (#{distance_of_time_in_words(position.started_at, position.ended_at)})
+  .row-fluid
+    %h3 Education
+    %table.table.table-striped.table-bordered
+      %thead
+        %tr
+          %th Institute
+          %th Degree
+          %th Field of Study
+          %th Duration
+      %tbody
+        - @resume.educations.each do|education|
+          %tr
+            %td
+              = "#{education.school}"
+            %td
+              = "#{education.degree}"
+            %td
+              = "#{education.field_of_study}"
+            %td
+              = "#{education.started_at.year} - #{education.ended_at.year}"
+  .row-fluid
+    %h3 Skills
+    %table.table-bordered.table.table-striped
+      %thead
+        %tr
+          %th Type
+          %th Description
+      %tbody
+        - @resume.skills.each do|skill|
+          %tr
+            %td
+              = "#{skill.type}"
+            %td
+              = "#{skill.description}"
 
   .row-fluid
-    = sprintf('%s %s', @resume.firstname, @resume.lastname)
+    .span4
+      %h3 Personal Information
+      .well
+        ="Address: #{@resume.mailing_address}"
+        %br/
+        ="Telephone : #{@resume.contact_number}"
+        %br/
+        ="Language : #{@resume.language}"
+        %br/
+        ="Summary : #{@resume.summary}"

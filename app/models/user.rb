@@ -54,4 +54,8 @@ class User
   def is_candidate?
     self.account_type == 'jobseeker'
   end
+
+  def is_employer?
+    self.account_type == 'employer'
+  end
 end
