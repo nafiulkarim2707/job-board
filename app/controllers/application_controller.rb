@@ -9,8 +9,7 @@ class ApplicationController < ActionController::Base
       when 'employer'
         :employer_root
       when 'jobseeker'
-        #TODO to be added when jobseeker dashboard is added
-        :root
+        :candidate_root
       else
         :root
     end
