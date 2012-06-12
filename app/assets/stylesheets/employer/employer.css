@@ -3,6 +3,7 @@
  *= require jquery.ui.core
  *= require jquery.ui.theme
  *= require ../../../../vendor/assets/stylesheets/jquery.tagsinput.css
+ *= require ../../../../vendor/assets/stylesheets/colorbox.css
  *= require_tree .
  *= require ../bootstrap_and_overrides.css.less
 */

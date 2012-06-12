@@ -1,4 +1,4 @@
-%section
+%section#candidacies
   .page-header
     - if @candidacies.present?
       %h1 jobs applications for #{@job.title}
@@ -9,19 +9,12 @@
         %th
           = t(:candidate_name)
         %th
-          = t(:candidate_name)
+          = t(:applied_on)
         %th
           = t(:status)
         %th
           actions
       - @candidacies.each do |c|
-        %tr
-          %td= link_to c.candidate.name, candidate_path(c.candidate), :target => :_blank
-          %td= c.created_at
-          %td= c.status
-          %td
-            = link_to_function 'reject', "alert('rejecting');", :class => 'btn btn-mini btn-danger'
-            = link_to_function 'consider', "alert('considering');", :class => 'btn btn-mini'
-
+        = render 'candidacy', :c => c
   - else
     no application received so far

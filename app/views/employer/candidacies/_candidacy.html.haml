@@ -1,0 +1,12 @@
+%tr{id: "row_#{c.id}"}
+  %td= link_to c.candidate.name, candidate_path(c.candidate), :class => 'resume_link', :target => :_blank
+  %td= c.created_at
+  %td= c.status
+  %td
+    = link_to 'consider',employer_job_candidacy_consider_path(c.job, c), :method => :put,
+      :remote => true, :class => 'btn btn-mini'
+    = link_to 'trash',employer_job_candidacy_trash_path(c.job, c), :method => :put,
+      :remote => true, :class => 'btn btn-mini btn-inverse'
+    = link_to 'delete',employer_job_candidacy_delete_path(c.job, c),
+      :method => :delete, :remote => true, :class => 'btn btn-mini btn-danger',
+      :confirm => 'Do you really want to remove this candidacy?'

@@ -38,7 +38,11 @@ JobBoard::Application.routes.draw do
 
     resources :jobs do
       get 'clone', :to => 'jobs#duplicate', :as => 'duplicate'
-      resources :candidacies
+      resources :candidacies do
+        put 'trash', :to => 'candidacies#edit', :status => 'trash'
+        put 'consider', :to => 'candidacies#edit', :status => 'consider'
+        delete 'delete', :to => 'candidacies#destroy', :status => 'delete'
+      end
     end
 
   end
