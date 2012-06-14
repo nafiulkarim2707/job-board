@@ -6,8 +6,7 @@
       %a.jb-item{:href => job_url(job), :target => '_blank'}
         = job.title
         %span.jb-comp
+          @
           = job.company.name
-        %span.jb-loc
-          = job.location
 - else
   no available position!
